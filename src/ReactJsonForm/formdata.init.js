@@ -75,7 +75,6 @@ function arrayParser({ schema }) {
         throw `array's items's type must be object`;
     }
     if (schema.minItems && typeof schema.minItems === 'number') {  //如果minItems存在且为数字
-        // let res = [];
         let singleDefault = objectParser({ schema: items.properties });
         let res = Array.apply(null, Array(schema.minItems)).map(() => singleDefault);  //填充
         return res;
