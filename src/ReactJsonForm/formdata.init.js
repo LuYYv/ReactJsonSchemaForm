@@ -3,7 +3,7 @@
  * 根级的type必须为object，array的子集type必须是object，default类型必须对应
 */
 
-const typeParser = {
+const typeParser = {   //number, string, boolean的方法大致相同，先不拆了，防止个性化
     number: numberParser,
     string: stringParser,
     array: arrayParser,
@@ -21,10 +21,12 @@ export function getDefaultFormDataBySchema({ schema }) {
     let defaultFormData = {};
     const { properties = {} } = schema;
     defaultFormData = objectParser({ schema: properties }) || {};
-    console.log(defaultFormData);
     return defaultFormData;
 }
 
+/**
+ * object类型解析器
+*/
 function objectParser({ schema }) {
     let res = {};
     Object.keys(schema).map(k => {
@@ -40,6 +42,9 @@ function objectParser({ schema }) {
     return JSON.stringify(res) === '{}' ? undefined : JSON.parse(JSON.stringify(res));
 }
 
+/**
+ * number类型解析器
+*/
 function numberParser({ schema }) {
     if (schema.default && typeof schema.default !== 'number') {
         console.error(schema);
@@ -48,6 +53,9 @@ function numberParser({ schema }) {
     return schema.default;
 }
 
+/**
+ * string类型解析器
+*/
 function stringParser({ schema }) {
     if (schema.default && typeof schema.default !== 'string') {
         console.error(schema);
@@ -56,6 +64,9 @@ function stringParser({ schema }) {
     return schema.default;
 }
 
+/**
+ * boolean类型解析器
+*/
 function booleanParser({ schema }) {
     if (schema.default && typeof schema.default !== 'boolean') {
         console.error(schema);
@@ -64,6 +75,9 @@ function booleanParser({ schema }) {
     return schema.default;
 }
 
+/**
+ * array类型解析器
+*/
 function arrayParser({ schema }) {
     //array类型的，默认没有child，必须点击添加，但是如果配置了minItems，则会生成defaultFormData
     if (schema.items == undefined) {   //判断是否有items
