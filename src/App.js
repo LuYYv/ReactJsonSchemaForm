@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import ReactJsonForm from './ReactJsonForm/ReactJsonFrom';
+import { schema } from '../mockData';
 
 class App extends Component {
     constructor(props) {
@@ -8,7 +10,9 @@ class App extends Component {
     render() {
         return (
             <div>
-                App
+                <ReactJsonForm
+                    schema={schema}
+                />
             </div>
         );
     }
