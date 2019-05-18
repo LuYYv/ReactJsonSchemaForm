@@ -13,7 +13,7 @@ class ReactJsonForm extends Component {
 
     render() {
         return (
-            <div></div>
+            <div>1</div>
         );
     }
 }
