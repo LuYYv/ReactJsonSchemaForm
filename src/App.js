@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactJsonForm from './ReactJsonForm/ReactJsonFrom';
+import ReactJsonForm from './ReactJsonForm/ReactJsonForm';
 import { schema } from '../mockData';
 
 class App extends Component {

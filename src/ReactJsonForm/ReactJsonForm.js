@@ -27,7 +27,9 @@ class ReactJsonForm extends Component {
 
     render() {
         return (
-            <div></div>
+            <div className="json-schema-form">
+                
+            </div>
         );
     }
 }
