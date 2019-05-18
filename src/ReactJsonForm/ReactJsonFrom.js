@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getDefaultFormDataBySchema } from './formdata.init';
+import FormDataInit from './formdata.init';
 
 class ReactJsonForm extends Component {
     constructor(props) {
@@ -8,12 +8,26 @@ class ReactJsonForm extends Component {
     }
 
     componentDidMount() {
-        getDefaultFormDataBySchema({ schema: this.props.schema })
+        this.initFormConfig();  //
+    }
+
+    /**
+     * 获取初始化的schema formData uiSchema, 并且做必要的处理
+     */
+    initFormConfig() {
+        const { schema, formData = {}, uiSchema = {} } = this.props;
+        const _formData = new FormDataInit({ schema, formData }).getInitFormData();
+        //后期如果要对初始化的schema进行处理，在这个地方做处理然后setState
+        this.setState({
+            schema: schema,
+            formData: _formData,
+            uiSchema
+        });
     }
 
     render() {
         return (
-            <div>1</div>
+            <div></div>
         );
     }
 }
