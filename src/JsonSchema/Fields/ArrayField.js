@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import './style.scss';
 
-class BooleanField extends Component {
+class ArrayField extends Component {
     constructor(props) {
         super(props);
     }
 
     render() {
         return (
-            <div className="boolean-field"></div>
+            <div className="array-field"></div>
         );
     }
 }
 
-export default BooleanField;
+export default ArrayField;

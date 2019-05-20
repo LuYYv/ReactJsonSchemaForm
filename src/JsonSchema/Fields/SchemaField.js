@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { getTargetFieldBySchema } from '../field.parser';
-import './style.scss';
+import { getTargetFieldBySchema } from './field.parser';
 
 /**
  * @constructor

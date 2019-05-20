@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import SchemaField from '../SchemaField';
-import TitleField from '../TitleField';
-import './style.scss';
+import SchemaField from './SchemaField';
+import LayoutWrapper from '../Layout';
 
 /**
  * @constructor
@@ -40,26 +39,12 @@ class ObjectField extends Component {
         return _view;
     }
 
-    /**
-     * 获取object类型的title显示
-     * @return {component}
-    */
-    getTitleField() {
-        const { schema: { title } } = this.props;
-        if (title == undefined) return null;
-        let _titleView = (
-            <TitleField
-                title={title}
-            />
-        )
-        return _titleView;
-    }
-
     render() {
+        const { schema } = this.props;
+        let child = this.getChildField();
         return (
             <div className="object-field">
-                {this.getTitleField()}
-                {this.getChildField()}
+                {LayoutWrapper({ schema, child })}
             </div>
         );
     }

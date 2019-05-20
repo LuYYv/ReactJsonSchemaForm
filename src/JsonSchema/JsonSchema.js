@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import SchemaField from './Fields/SchemaField/index';
+import SchemaField from './Fields/SchemaField';
 import 'antd/dist/antd.css'
+import './Styles/index.scss';
 
 /**
  * @constructor

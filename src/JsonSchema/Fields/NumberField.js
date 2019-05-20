@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './style.scss';
 
 class NumberField extends Component {
     constructor(props) {

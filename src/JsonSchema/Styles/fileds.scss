@@ -1,12 +1,36 @@
 $titleColor: #868686;
 $borderColor: #f0f2f5;
 
+.array-field {
+
+}
+
+.boolean-field {
+
+}
+
+.number-field {
+    
+}
+
+.object-field {
+
+}
+
+.schema-field {
+
+}
+
+.string-field {
+
+}
+
 .title-field {
     height: 45px;
     line-height: 45px;
     font-size: 13px;
     font-weight: bold;
-    padding-left: 20px;
+    padding-left: 30px;
     color: $titleColor;
     border-bottom: 1px solid $borderColor;
     margin-bottom: 10px;
