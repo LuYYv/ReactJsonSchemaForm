@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactJsonForm from './ReactJsonForm/ReactJsonForm';
+import Form from './Form';
 import './app.scss';
 import { schema } from '../mockData';
 
@@ -12,7 +12,7 @@ class App extends Component {
     render() {
         return (
             <div>
-                <ReactJsonForm
+                <Form
                     schema={schema}
                 />
             </div>

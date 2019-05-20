@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SchemaField from './Fields/SchemaField';
+import SchemaField from './Fields/SchemaField/index';
 
 /**
  * @constructor
@@ -14,9 +14,16 @@ class JsonSchema extends Component {
     }
 
     render() {
+        const { schema, formData, uiSchema, onChange } = this.props;
         return (
             <div className="json-schema">
-
+                <SchemaField
+                    schema={schema}
+                    formData={formData}
+                    uiSchema={uiSchema}
+                    onChange={onChange}
+                    $id='$root'  //根级识别符
+                />
             </div>
         );
     }

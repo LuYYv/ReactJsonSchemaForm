@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import FormDataInit from './formdata.init';
-import './react-json-form.scss';
 import JsonSchema from '../JsonSchema/JsonSchema';
+import './style.scss';
 
 class ReactJsonForm extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            componentInit: false
+        }
     }
 
     componentDidMount() {
@@ -23,12 +26,14 @@ class ReactJsonForm extends Component {
         this.setState({
             schema: schema,
             formData: _formData,
-            uiSchema
+            uiSchema,
+            componentInit: true
         });
     }
 
     render() {
-        const { schema, formData, uiSchema } = this.state;
+        const { componentInit, schema, formData, uiSchema } = this.state;
+        if (!componentInit) return null;
         return (
             <div className="json-schema-form">
                 <JsonSchema
