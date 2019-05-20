@@ -5,6 +5,11 @@
 
 import _ from 'lodash';
 
+/**
+ * @constructor
+ * @param {object} props.schema
+ * @param {object} props.formData
+ */
 class FormDataInit {
     constructor(props) {
         this.props = props;
@@ -16,8 +21,9 @@ class FormDataInit {
         }
     }
 
-    /** 
+    /**
      * 此函数根据getDefaultFormDataBySchema中生成的defaultFormData，与传入的formData合并成一份初始化值
+     * @return {object} 返回合并后的formData
     */
    getInitFormData() {
        const { schema, formData = {} } = this.props;
@@ -28,6 +34,7 @@ class FormDataInit {
 
     /**
      * 此函数根据schema中的default值生成一份formData
+     * @return {object} 返回用schema生成的defaultFormData
     */
     getDefaultFormDataBySchema() {
         const schema = this.props.schema;
@@ -43,6 +50,8 @@ class FormDataInit {
 
     /**
      * object类型解析器
+     * @param {object} parama.schema
+     * @return {object} //部分formData
     */
     objectParser({ schema }) {
         let res = {};
@@ -61,6 +70,8 @@ class FormDataInit {
 
     /**
      * number类型解析器
+     * @param {object} parama.schema
+     * @return {object} //部分formData
     */
     numberParser({ schema }) {
         if (schema.default && typeof schema.default !== 'number') {
@@ -72,6 +83,8 @@ class FormDataInit {
 
     /**
      * string类型解析器
+     * @param {object} parama.schema
+     * @return {object} //部分formData
     */
     stringParser({ schema }) {
         if (schema.default && typeof schema.default !== 'string') {
@@ -83,6 +96,8 @@ class FormDataInit {
 
     /**
      * boolean类型解析器
+     * @param {object} parama.schema
+     * @return {object} //部分formData
     */
     booleanParser({ schema }) {
         if (schema.default && typeof schema.default !== 'boolean') {
@@ -94,6 +109,8 @@ class FormDataInit {
 
     /**
      * array类型解析器
+     * @param {object} parama.schema
+     * @return {object} //部分formData
     */
     arrayParser({ schema }) {
         //array类型的，默认没有child，必须点击添加，但是如果配置了minItems，则会生成defaultFormData
