@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 
 class FormItem extends Component {
-    componentDidMount() {
-        console.log(this.props);
-    }
     
     render() {
         const {

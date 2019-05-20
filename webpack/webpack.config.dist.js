@@ -9,7 +9,7 @@ const { TITLE } = app_config;
 
 module.exports = {
     mode: 'production',
-    entry: path.resolve(__dirname, '../src/App.js'),
+    entry: path.resolve(__dirname, '../src/index.js'),
     resolve: {
         mainFiles: [
             'index.js'
@@ -42,6 +42,12 @@ module.exports = {
         ]
     },
     plugins: [
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, '../index.html'),
+            title: TITLE,
+            filename: 'index.html',
+            inject: true
+        }),
         new ExtractTextPlugin('style-[hash].css'),
         new webpack.DefinePlugin({
             APP_MODE: JSON.stringify('PRODUCTION')
