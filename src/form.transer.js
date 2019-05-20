@@ -35,5 +35,17 @@ const itemsTranser = (schema, path, type) => {
 }
 
 const arrayTranser = (schema, path)=> {
-    return "array";
+    if (schema.items == undefined) {   //判断是否有items
+        throw `${path} array schema must have items`;
+    }
+    const { items } = schema;
+    if (items.type !== 'object') {  //判断item.type是否为object
+        console.error(items);
+        throw `${path} array's items's type must be object`;
+    }
+    if (schema.minItems && typeof schema.minItems === 'number') {  //如果minItems存在且为数字
+        let singleDefault = this.objectParser({ schema: items.properties });
+        return new Array(schema.minItems).fill(JSON.parse(JSON.stringify(singleDefault))); 
+    }
+    return undefined;
 }

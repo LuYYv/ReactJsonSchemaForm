@@ -6,6 +6,8 @@ import ReactJsonSchema from './JsonSchema'
 class App extends Component {
     constructor(props) {
         super(props);
+        this.handleFormDataChange = this.handleFormDataChange.bind(this);
+        this._createChangedData = this._createChangedData.bind(this);
         this.state = {
             jsonSchema: null,
             formData: null,
@@ -26,6 +28,26 @@ class App extends Component {
         })
     }
 
+    _createChangedData (value, path) {
+        let Data = {};
+        if (path.length === 1) 
+            Data[path[0]] = value;
+        else{
+            Data[path[0]] = this._createChangedData(value, path.slice(1))
+        }
+        return Data;
+    }
+
+    handleFormDataChange (value, id) {
+        const {formData} = this.state;
+        let path = id.split('-').slice(1);
+        let newData = this._createChangedData(value, path);
+        let _formData = _.merge(formData, newData);
+        this.setState({
+            formData: _formData
+        })
+    }
+
     render() {
         if( !this.state.componentInit ) return null;
         const {jsonSchema, formData, uiSchema} = this.state;
@@ -34,7 +56,8 @@ class App extends Component {
                 <ReactJsonSchema
                     jsonSchema={jsonSchema}
                     formData={formData}
-                    uiSchema={uiSchema} />
+                    uiSchema={uiSchema} 
+                    onChange={this.handleFormDataChange} />
             </div>
         );
     }
