@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import FormDataInit from './formdata.init';
 import './react-json-form.scss';
+import JsonSchema from '../JsonSchema/JsonSchema';
 
 class ReactJsonForm extends Component {
     constructor(props) {
@@ -27,9 +28,14 @@ class ReactJsonForm extends Component {
     }
 
     render() {
+        const { schema, formData, uiSchema } = this.state;
         return (
             <div className="json-schema-form">
-
+                <JsonSchema
+                    schema={schema}
+                    formData={formData}
+                    uiSchema={uiSchema}
+                />
             </div>
         );
     }
