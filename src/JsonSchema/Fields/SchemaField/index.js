@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { getTargetFieldBySchema } from '../field.parser';
 import './style.scss';
 
 /**
@@ -12,12 +13,35 @@ import './style.scss';
 class SchemaField extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+    }
+
+    /**
+     * 根据schema的type获取到不同的组件
+     * @return {component}  各种类型的组件
+    */
+    getViewField () {
+        const {
+            schema,
+            formData,
+            uiSchema,
+            $id,
+            onChange
+        } = this.props;
+        //获取不同类型的field
+        let View = getTargetFieldBySchema(schema.type);
+        return (
+            <View
+                schema={schema}
+                $id={$id}
+            />
+        )
     }
 
     render() {
         return (
-            <div className="schema-field"></div>
+            <div className="schema-field">
+                {this.getViewField()}
+            </div>
         );
     }
 }

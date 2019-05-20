@@ -10,6 +10,11 @@ const { TITLE } = app_config;
 module.exports = {
     mode: 'production',
     entry: path.resolve(__dirname, '../src/App.js'),
+    resolve: {
+        mainFiles: [
+            'index.js'
+        ]
+    },
     output: {
         path: path.resolve(__dirname, '../dist'),
         filename: 'bundle-[hash].js'
@@ -22,7 +27,11 @@ module.exports = {
                 loader: 'babel-loader'
             },
             {
-                test: /\.(css|scss)$/,
+                test: /\.css$/,
+                loader: 'style-loader!css-loader'
+            },
+            {
+                test: /\.scss$/,
                 exclude: /node_modules/,
                 loader: ExtractTextPlugin.extract({ use: ['css-loader', 'sass-loader'] })
             },
@@ -33,12 +42,6 @@ module.exports = {
         ]
     },
     plugins: [
-        // new HtmlWebpackPlugin({
-        //     template: path.resolve(__dirname, '../index.html'),
-        //     title: TITLE,
-        //     filename: 'index.html',
-        //     inject: true
-        // }),
         new ExtractTextPlugin('style-[hash].css'),
         new webpack.DefinePlugin({
             APP_MODE: JSON.stringify('PRODUCTION')

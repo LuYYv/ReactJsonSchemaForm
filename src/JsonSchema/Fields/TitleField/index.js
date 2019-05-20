@@ -7,8 +7,9 @@ class TitleField extends Component {
     }
 
     render() {
+        const { title } = this.props;
         return (
-            <div className="title-field"></div>
+            <div className="title-field">{title}</div>
         );
     }
 }

@@ -1,3 +1,13 @@
-.title-field {
+$titleColor: #868686;
+$borderColor: #f0f2f5;
 
+.title-field {
+    height: 45px;
+    line-height: 45px;
+    font-size: 13px;
+    font-weight: bold;
+    padding-left: 20px;
+    color: $titleColor;
+    border-bottom: 1px solid $borderColor;
+    margin-bottom: 10px;
 }

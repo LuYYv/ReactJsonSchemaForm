@@ -11,6 +11,11 @@ module.exports = {
     mode: 'development',
     entry: path.resolve(__dirname, '../src/index.js'),
     devtool: 'cheap-module-eval-source-map',
+    resolve: {
+        mainFiles: [
+            'index.js'
+        ]
+    },
     devServer: {
         historyApiFallback: true,
         inline: true,  //自动刷新
@@ -27,12 +32,16 @@ module.exports = {
                 loader: 'babel-loader'
             },
             {
-                test: /\.(css|scss)$/,
+                test: /\.css$/,
+                loader: 'style-loader!css-loader'
+            },
+            {
+                test: /\.scss$/,
                 exclude: /node_modules/,
                 loader: ExtractTextPlugin.extract({ use: ['css-loader', 'sass-loader'] })
             },
             {
-                test: /\.(png|jpg|gif)$/,
+                test: /\.(png|jpg|gif|woff)$/,
                 loader: 'url-loader',
                 options: {
                     limit: 8192
