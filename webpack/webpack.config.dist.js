@@ -27,13 +27,8 @@ module.exports = {
                 loader: 'babel-loader'
             },
             {
-                test: /\.css$/,
-                loader: 'style-loader!css-loader'
-            },
-            {
-                test: /\.scss$/,
-                exclude: /node_modules/,
-                loader: ExtractTextPlugin.extract({ use: ['css-loader', 'sass-loader'] })
+                test: /\.(css|scss)$/,
+                loader: ExtractTextPlugin.extract({ use: ["css-loader", "sass-loader"] })
             },
             {
                 test: /\.(png|jpg|gif)$/,
