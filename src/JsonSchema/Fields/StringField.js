@@ -9,7 +9,8 @@ class StringField extends Component {
 
     handChange (e) {
         const {formData, onChange, $id} = this.props;
-        if ( onChange === undefined ) return formData;
+        if ( onChange === undefined ) 
+            throw `${$id} onChange is required`;
         onChange (e.target.value, $id);
     }
 

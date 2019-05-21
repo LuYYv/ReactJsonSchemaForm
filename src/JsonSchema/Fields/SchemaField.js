@@ -4,15 +4,9 @@ import {fieldRegister} from './Fields.register';
 class SchemaField extends Component {
     constructor(props) {
         super(props);
-        this.handleChange = this.handleChange.bind(this);
         this.state = {  }
     }
 
-    handleChange(value, id){
-        const {formData, onChange} = this.props;
-        if ( onChange === undefined ) return formData;
-        onChange (value, id);
-    }
 
     render() { 
         const {$id, jsonSchema, formData} = this.props;
@@ -22,7 +16,7 @@ class SchemaField extends Component {
                     $id,
                     jsonSchema,
                     formData,
-                    onChange: this.handleChange
+                    onChange: this.props.onChange
                 })}
             </div>
          );

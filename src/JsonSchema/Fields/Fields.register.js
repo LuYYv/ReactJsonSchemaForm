@@ -3,6 +3,7 @@ import StringField from './StringField';
 import NumberField from './NumberField';
 import ObjectField from './ObjectField';
 
+
 export const fieldRegister = ({jsonSchema, formData, uiSchema, $id, onChange})=> {
     const field = {
         "object": <ObjectField schema={jsonSchema} formData={formData} uiSchema={uiSchema} $id={$id} onChange={onChange}/>,

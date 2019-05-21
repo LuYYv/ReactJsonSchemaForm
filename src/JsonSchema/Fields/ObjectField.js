@@ -5,7 +5,6 @@ class ObjectField extends Component {
     constructor(props) {
         super(props);
         this._createRender = this._createRender.bind(this);
-        this.handChange = this.handChange.bind(this);
         this.state = {  }
     }
 
@@ -17,17 +16,11 @@ class ObjectField extends Component {
                     $id={`${$id}-${i}`}
                     jsonSchema={schema.properties[i]}
                     formData={formData[i]}
-                    onChange={this.handChange}
+                    onChange={this.props.onChange}
                  />
         })
 
         return objectProperties;
-    }
-
-    handChange (value, id) {
-        const {formData, onChange} = this.props;
-        if ( onChange === undefined ) return formData;
-        onChange (value, id);
     }
 
     render() { 
