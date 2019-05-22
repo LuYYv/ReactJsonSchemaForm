@@ -22,7 +22,6 @@ class App extends Component {
         schemaChecker(jsonSchema);
         let defFormData = transDefData(jsonSchema);
         let _formData = _.merge(defFormData, formData); 
-        _.merge({a: 1, b: 2 }, { a: 1 }) //你说得啥
         this.setState({
             jsonSchema,
             formData: _formData,
