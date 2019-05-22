@@ -8,12 +8,12 @@ class TextInput extends Component {
     }
 
     render() {
-        const { schema } = this.props;
+        const { schema, name, required } = this.props;
         return (
             <FormItem
-                name={schema.name}
+                name={name}
                 title={schema.title}
-                reuqired={true}
+                reuqired={required}
             >
                 <Input />
             </FormItem>

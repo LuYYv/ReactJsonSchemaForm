@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 
+/**
+ * @constructor
+ * @param {object} props.title
+*/
 class TitleField extends Component {
     constructor(props) {
         super(props);

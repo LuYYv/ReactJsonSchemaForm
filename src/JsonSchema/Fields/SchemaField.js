@@ -19,21 +19,9 @@ class SchemaField extends Component {
      * @return {component}  各种类型的组件
     */
     getViewField () {
-        const {
-            schema,
-            formData,
-            uiSchema,
-            $id,
-            onChange
-        } = this.props;
         //获取不同类型的field
-        let View = getTargetFieldBySchema(schema.type);
-        return (
-            <View
-                schema={schema}
-                $id={$id}
-            />
-        )
+        let View = getTargetFieldBySchema(this.props.schema.type);
+        return <View {...this.props} />
     }
 
     render() {

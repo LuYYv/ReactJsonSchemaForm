@@ -16,6 +16,7 @@
 export const schema = {
     "type": "object",
     "title": "企业信息",
+    "required": ["invitationCode"],
     "properties": {
         "invitationCode": {
             "type": "string",

@@ -11,12 +11,16 @@ import React, { Component } from 'react';
 class FormItem extends Component {
     render() {
         const {
-            title
+            title,
+            name,
+            required
         } = this.props;
+
         return (
             <div className="form-item">
                 <div className="label">
-                    {title} :
+                    { required == true ? <span className="required-mark">*</span> : null }
+                    {title ? `${title} :` : `${name} :`}
                 </div>
                 <div className="widget">
                     {this.props.children}
