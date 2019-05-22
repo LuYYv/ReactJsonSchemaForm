@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Form from './Form';
 import './app.scss';
-import { schema } from '../mockData';
+import { schema, formData } from '../mockData';
 
 class App extends Component {
     constructor(props) {
@@ -14,6 +14,7 @@ class App extends Component {
             <div>
                 <Form
                     schema={schema}
+                    formData={formData}
                 />
             </div>
         );

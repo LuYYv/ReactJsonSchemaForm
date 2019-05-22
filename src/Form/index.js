@@ -6,6 +6,7 @@ import './style.scss';
 class ReactJsonForm extends Component {
     constructor(props) {
         super(props);
+        this.onChange = this.onChange.bind(this);
         this.state = {
             componentInit: false
         }
@@ -31,6 +32,13 @@ class ReactJsonForm extends Component {
         });
     }
 
+    onChange(e, path) {
+        let _path = path.split('.').splice(1).join('.');
+        let _formData = JSON.parse(JSON.stringify(this.state.formData));
+        _.set(_formData, _path, e);
+        this.setState({ formData: JSON.parse(JSON.stringify(_formData)) });
+    }
+
     render() {
         const { componentInit, schema, formData, uiSchema } = this.state;
         if (!componentInit) return null;
@@ -40,6 +48,7 @@ class ReactJsonForm extends Component {
                     schema={schema}
                     formData={formData}
                     uiSchema={uiSchema}
+                    onChange={this.onChange}
                 />
             </div>
         );

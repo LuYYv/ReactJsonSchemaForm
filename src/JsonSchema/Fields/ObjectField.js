@@ -22,19 +22,23 @@ class ObjectField extends Component {
     getChildField() {
         const {
             schema,
-            $id
+            formData = {},
+            $id,
+            onChange
         } = this.props;
         let _view = [];
         //遍历所有子节点
-        console.log(schema);
         Object.keys(schema.properties).map(k => {
             let _idPath = `${$id}.${k}`;  //当前节点的path
             _view.push(
                 <SchemaField
                     schema={schema.properties[k]}
+                    formData={formData[k]}
                     name={k}
                     $id={_idPath}
                     key={_idPath}
+                    required={(schema.required || []).indexOf(k) != -1}
+                    onChange={onChange}
                 />
             )
         })

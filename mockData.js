@@ -128,3 +128,10 @@ export const schema = {
         }
     }
 }
+
+export const formData = {
+    "invitationCode": "HANKH",
+    "businessLicenseInfo": {
+        "name": "奥特曼有限公司"
+    }
+}

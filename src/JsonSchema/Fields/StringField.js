@@ -12,12 +12,23 @@ import { getWidgetBySchema } from '../Widgets/widget.parser';
 class StringField extends Component {
     constructor(props) {
         super(props);
+        this.onChange = this.onChange.bind(this);
+    }
+
+    onChange(value) {
+        this.props.onChange && this.props.onChange(value == "" ? undefined : value, this.props.$id);
     }
 
     //根据schema生成指定的组件
     getWidget() {
-        const { schema, name, required } = this.props;
-        return getWidgetBySchema({ schema, name, required })
+        const { schema, formData, name, required } = this.props;
+        return getWidgetBySchema({
+            schema,
+            formData,
+            name,
+            required,
+            onChange: this.onChange
+        })
     }
 
     render() {
