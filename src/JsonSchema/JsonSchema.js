@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SchemaField from './Fields/SchemaField';
-import 'antd/dist/antd.css'
+import './Styles/antdbase.less';  //antd样式的入口文件，修改主题的乳沟
 import './Styles/index.scss';
 
 /**

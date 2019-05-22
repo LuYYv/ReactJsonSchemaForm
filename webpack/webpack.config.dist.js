@@ -31,6 +31,21 @@ module.exports = {
                 loader: ExtractTextPlugin.extract({ use: ["css-loader", "sass-loader"] })
             },
             {
+                test: /\.less$/,
+                loader: ExtractTextPlugin.extract({
+                    use: [
+                        { loader: 'css-loader' },
+                        { loader: 'less-loader', options: { javascriptEnabled: true } },
+                        {
+                            loader: 'style-resources-loader',
+                            options: {
+                                patterns: path.resolve(__dirname, './src/Style/antdbase.less')
+                            }
+                        }
+                    ]
+                })
+            },
+            {
                 test: /\.(png|jpg|gif)$/,
                 loader: 'url-loader?limit=1&name=images/[hash:8].[name].[ext]'
             }
