@@ -11,7 +11,9 @@ class TextInput extends Component {
         const { schema } = this.props;
         return (
             <FormItem
+                name={schema.name}
                 title={schema.title}
+                reuqired={true}
             >
                 <Input />
             </FormItem>
