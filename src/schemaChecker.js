@@ -6,18 +6,13 @@ export const schemaChecker = (schema) => {
 
 
 const itemsCheck = (schema) => {
-    preChecker(schema);
+    if (schema.title == undefined || schema.type == undefined)
+        throw `${schema} is uncompleted `
+        
     const {checker, props} = checkerMap[schema.type];
     if (checker == undefined || props == undefined) throw `type is unexpected at ${schema} `
     checker(schema, props);
 }
-
-//所有字段必须有的
-const preChecker = (schema) => {
-    if (schema.title == undefined || schema.type == undefined)
-        throw `${schema} is uncompleted `
-}
-
 
 const checker = (schema, props) =>{
     Object.keys(schema).map( i=> {
