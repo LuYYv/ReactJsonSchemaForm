@@ -10,17 +10,18 @@ class NumberField extends Component {
     handChange (e) {
         const {formData, onChange, $id} = this.props;
         if ( onChange === undefined ) return formData;
-        onChange (e.target.value, $id);
+        onChange (e.target.value === "" ? undefined : e.target.value, $id);
     }
 
     render() { 
-        const {schema:{type, title}, formData, uiSchema, $id} = this.props;
+        const {schema:{type, title, mustFill}, formData, uiSchema, $id} = this.props;
         return ( 
-            <div className="input-wrapper">
-                <span className="title number-title">{title}:</span>
-                <input className="input number-input"
-                    type={type} 
-                    value={formData}
+            <div className="input-wrapper number-field">
+                <span className="label">{title} :</span>
+                {mustFill?<span className="must-fill">*</span>:null}
+                <input className="input"
+                    type={type}
+                    value={formData || ""}
                     onChange={this.handChange} />
             </div>
          );

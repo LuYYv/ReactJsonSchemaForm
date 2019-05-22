@@ -10,12 +10,10 @@ const fieldMap = {
 }
 
 
-export const fieldRegister = ({jsonSchema, formData, uiSchema, $id, onChange})=> {
-        const Field = fieldMap[jsonSchema.type];
+export const fieldRegister = (type)=> {
+        const Field = fieldMap[type];
         if (Field == undefined) throw "schema error";
         return (
-            <Field 
-                schema={jsonSchema} formData={formData} uiSchema={uiSchema} $id={$id} onChange={onChange}
-            />
+            Field
         );
 }

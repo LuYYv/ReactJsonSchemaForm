@@ -22,12 +22,21 @@
         height: 30px;
         width: 100%;
         position: relative;
-        .title {
+        .label {
             position: absolute;
             right: 70%;
             height: 100%;
             line-height: 30px;
             font-size: 16px;
+            
+        }
+        .must-fill {
+            color: red;
+            position: absolute;
+            right: 68%;
+            height: 100%;
+            line-height: 30px;
+            font-size: 23px;
         }
         .input {
             position: absolute;
@@ -35,5 +44,6 @@
             width: 450px;
             height: 90%;
         }
+
     }
 }

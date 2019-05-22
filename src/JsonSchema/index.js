@@ -14,7 +14,7 @@ class ReactJsonSchema extends Component {
            <div className="json-schema-container">
                 <SchemaField
                     $id={"root"}
-                    jsonSchema={jsonSchema}
+                    schema={jsonSchema}
                     formData={formData} 
                     onChange={this.props.onChange} />
            </div>

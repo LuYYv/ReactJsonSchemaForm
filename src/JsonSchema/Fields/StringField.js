@@ -1,27 +1,22 @@
 import React, { Component } from 'react';
 
 class StringField extends Component {
-    constructor(props) {
-        super(props);
-        this.handChange = this.handChange.bind(this);
-        this.state = {  }
-    }
-
     handChange (e) {
         const {formData, onChange, $id} = this.props;
         if ( onChange === undefined ) 
             throw `${$id} onChange is required`;
-        onChange (e.target.value, $id);
+        onChange (e.target.value === "" ? undefined : e.target.value, $id);
     }
 
     render() { 
-        const {schema:{type, title}, formData, uiSchema, $id} = this.props;
+        const {schema:{type, title}, mustFill, formData, uiSchema, $id} = this.props;
         return ( 
-            <div className="input-wrapper">
-                <span className="title string-title">{title}:</span>
-                <input className="input string-input"
+            <div className="input-wrapper string-field">
+                <span className="label">{title} :</span>
+                {mustFill?<span className="must-fill">*</span>:null}
+                <input className="input"
                     type={type}
-                    value={formData}
+                    value={formData || ""}
                     onChange={this.handChange} />
             </div>
          );

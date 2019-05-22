@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import {transDefData} from './form.transer';
 import ReactJsonSchema from './JsonSchema'
+import {schemaChecker} from './schemaChecker'
+
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.handleFormDataChange = this.handleFormDataChange.bind(this);
-        this._createChangedData = this._createChangedData.bind(this);
         this.state = {
             jsonSchema: null,
             formData: null,
@@ -18,8 +19,10 @@ class App extends Component {
 
     componentDidMount() {
         const {jsonSchema, formData, uiData} = this.props;
+        schemaChecker(jsonSchema);
         let defFormData = transDefData(jsonSchema);
         let _formData = _.merge(defFormData, formData); 
+        _.merge({a: 1, b: 2 }, { a: 1 }) //你说得啥
         this.setState({
             jsonSchema,
             formData: _formData,
@@ -28,24 +31,13 @@ class App extends Component {
         })
     }
 
-    _createChangedData (value, path) {
-        let Data = {};
-        if (path.length === 1) 
-            Data[path[0]] = value;
-        else{
-            Data[path[0]] = this._createChangedData(value, path.slice(1))
-        }
-        return Data;
-    }
-
     handleFormDataChange (value, id) {
-        console.log(value);
         const {formData} = this.state;
         let path = id.split('-').slice(1);
-        let newData = this._createChangedData(value, path);
-        let _formData = _.merge(formData, newData);
+        _.set(formData, path, value);
+        console.log(value);
         this.setState({
-            formData: _formData
+            formData
         })
     }
 
