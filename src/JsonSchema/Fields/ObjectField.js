@@ -9,7 +9,7 @@ class ObjectField extends Component {
     }
 
     _createRender () {
-        const {schema, formData, uiSchema, $id} = this.props;
+        const {schema, formData = {}, uiSchema, $id} = this.props;
         let objectProperties = Object.keys(schema.properties).map(i=>{
             return <SchemaField
                     key={`${$id}-${i}`}
@@ -27,6 +27,7 @@ class ObjectField extends Component {
 
         return ( 
             <div>
+                <h3>{this.props.schema.title}</h3>
                 {this._createRender()}
             </div>
          );

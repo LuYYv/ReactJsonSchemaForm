@@ -15,12 +15,12 @@ class StringField extends Component {
     }
 
     render() { 
-        const {schema, formData, uiSchema, $id} = this.props;
+        const {schema:{type, title}, formData, uiSchema, $id} = this.props;
         return ( 
-            <div className={$id}>
-                <div>{schema.title}:</div>
-                <input 
-                    type={schema.type}
+            <div className="input-wrapper">
+                <span className="title string-title">{title}:</span>
+                <input className="input string-input"
+                    type={type}
                     value={formData}
                     onChange={this.handChange} />
             </div>

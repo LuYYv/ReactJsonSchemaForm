@@ -1,0 +1,39 @@
+@import "./numberField.scss";
+@import "./objectField.scss";
+@import "./objectField.scss";
+
+*{
+    padding: 0;
+    margin: 0;
+}
+.json-schema-container {
+    margin: 20px auto;
+    padding: 20px;
+    width: 800px;
+    border: 1px solid rgb(160, 160, 160);
+    h3{
+        border-bottom: 1px solid rgb(199, 199, 199);
+        margin: 30px 5px 15px 5px;
+        padding-bottom: 5px;
+        font-size: 17px;
+    }
+    .input-wrapper {
+        margin: 15px;
+        height: 30px;
+        width: 100%;
+        position: relative;
+        .title {
+            position: absolute;
+            right: 70%;
+            height: 100%;
+            line-height: 30px;
+            font-size: 16px;
+        }
+        .input {
+            position: absolute;
+            right: 10%;
+            width: 450px;
+            height: 90%;
+        }
+    }
+}
