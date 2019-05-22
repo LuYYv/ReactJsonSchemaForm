@@ -8,7 +8,7 @@ export const schemaChecker = (schema) => {
 const itemsCheck = (schema) => {
     if (schema.title == undefined || schema.type == undefined)
         throw `${schema} is uncompleted `
-        
+
     const {checker, props} = checkerMap[schema.type];
     if (checker == undefined || props == undefined) throw `type is unexpected at ${schema} `
     checker(schema, props);
@@ -39,6 +39,8 @@ const objectChecker = (schema) => {
         Array.from(require).map( i=> {
             if (properties[i] == undefined) 
                 throw `require ${i} at ${schema.title} is redundancy`
+            if (typeof properties[i] == "object")
+                throw `${properties[i]} cannot be required`;
         })
     }
 }
