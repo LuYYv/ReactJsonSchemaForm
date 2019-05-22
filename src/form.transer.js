@@ -19,7 +19,7 @@ const objectTranser = (schema, beforePath)=> {
             case "number":
             case "string":
             case "boolen":
-                formData[i] = itemsTranser(p, path, p.type) || "";
+                formData[i] = itemsTranser(p, path, p.type);
                 break;
             default:
                 throw `${path} type error`
