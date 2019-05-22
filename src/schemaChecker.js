@@ -1,11 +1,11 @@
 export const schemaChecker = (schema) => {
     if(schema.type !== "object")
         throw `jsonschema root must be object`;
-    itemsChecker(schema);
+    itemsCheck(schema);
 }
 
 
-const itemsChecker = (schema) => {
+const itemsCheck = (schema) => {
     preChecker(schema);
     const {checker, props} = checkerMap[schema.type];
     if (checker == undefined || props == undefined) throw `type is unexpected at ${schema} `
@@ -37,7 +37,7 @@ const objectChecker = (schema) => {
     if(properties == undefined || JSON.stringify(properties)==="{}") 
         throw `properties error at ${schema}`;
     Object.keys(properties).map(i => {
-        itemsChecker(properties[i]);
+        itemsCheck(properties[i]);
     })
 
     if(require) {
