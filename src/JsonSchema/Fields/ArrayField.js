@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 
+/**
+ * @component
+ * @constructor
+ */
 class ArrayField extends Component {
     constructor(props) {
         super(props);

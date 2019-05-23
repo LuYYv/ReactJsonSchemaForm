@@ -23,7 +23,8 @@
     "element-theme-default": "^1.4.13",
     "lodash": "^4.17.11",
     "react": "^16.4.0",
-    "react-dom": "^16.4.0"
+    "react-dom": "^16.4.0",
+    "react-number-format": "^4.0.8"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

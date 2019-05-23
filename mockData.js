@@ -19,7 +19,7 @@ export const schema = {
     "required": ["invitationCode"],
     "properties": {
         "invitationCode": {
-            "type": "string",
+            "type": "number",
             "title": "我的邀请码"
         },
         "businessLicenseInfo": {
@@ -130,7 +130,7 @@ export const schema = {
 }
 
 export const formData = {
-    "invitationCode": "HANKH",
+    "invitationCode": "111111hahahah",
     "businessLicenseInfo": {
         "name": "奥特曼有限公司"
     }

@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import FormItem from '../FormItem';
-import { Input } from 'antd';
+import FormatInput from 'react-number-format';
+import { InputNumber, Input } from 'antd';
 
-class TextInput extends Component {
+class NumberInput extends Component {
     constructor(props) {
         super(props);
         this.onChange = this.onChange.bind(this);
     }
 
     onChange(e) {
-        let _v = e.target.value;
-        this.props.onChange && this.props.onChange(_v == "" ? undefined : _v);
+        this.props.onChange && this.props.onChange(e.floatValue, this.props.$id);
     }
 
     render() {
@@ -22,13 +22,14 @@ class TextInput extends Component {
                 required={required}
                 className="text-input-widget"
             >
-                <Input
+                <FormatInput
+                    customInput={Input}
                     value={formData}
-                    onChange={this.onChange}
+                    onValueChange={this.onChange}
                 />
             </FormItem>
         );
     }
 }
 
-export default TextInput;
+export default NumberInput;

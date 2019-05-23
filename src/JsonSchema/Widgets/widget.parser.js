@@ -1,9 +1,13 @@
 import React from 'react';
 import TextInput from './TextInput';
+import NumberInput from './NumberInput';
 
 const widgetMap = {
     string: {
         default: TextInput
+    },
+    number: {
+        default: NumberInput
     }
 }
 

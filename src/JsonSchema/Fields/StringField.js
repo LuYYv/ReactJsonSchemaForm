@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { getWidgetBySchema } from '../Widgets/widget.parser';
 
 /**
+ * @component
  * @constructor
  * @param {object} props.schema
  * @param {object} props.formData

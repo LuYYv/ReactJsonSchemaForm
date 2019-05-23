@@ -3,6 +3,14 @@ import FormDataInit from './formdata.init';
 import JsonSchema from '../JsonSchema/JsonSchema';
 import './style.scss';
 
+/**
+ * 表单整体
+ * @component
+ * @constructor
+ * @param {object} props.schema
+ * @param {object} props.formData
+ * @param {object} props.uiSchema
+ */
 class ReactJsonForm extends Component {
     constructor(props) {
         super(props);
@@ -32,11 +40,18 @@ class ReactJsonForm extends Component {
         });
     }
 
+    /**
+     * 某个值域改变的时候， 根据path去更新数据，并过滤掉undefined
+     * @param {*} e  改变的值域对应的value， 任意类型，校验在相应的field做好
+     * @param {string} path  改变值域的路径
+     */
     onChange(e, path) {
         let _path = path.split('.').splice(1).join('.');
         let _formData = JSON.parse(JSON.stringify(this.state.formData));
         _.set(_formData, _path, e);
-        this.setState({ formData: JSON.parse(JSON.stringify(_formData)) });
+        this.setState({ formData: JSON.parse(JSON.stringify(_formData)) }, () => {
+            console.log(this.state.formData);
+        });
     }
 
     render() {

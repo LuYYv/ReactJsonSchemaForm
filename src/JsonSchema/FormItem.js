@@ -7,17 +7,19 @@ import React, { Component } from 'react';
  * @param {string} props.name  schema的名字
  * @param {string} props.title  控件的title
  * @param {boolean} props.required  是否必填
+ * @param {boolean} props.className  class名
  */
 class FormItem extends Component {
     render() {
         const {
             title,
             name,
-            required
+            required,
+            className
         } = this.props;
 
         return (
-            <div className="form-item">
+            <div className={`form-item ${className}`}>
                 <div className="label">
                     { required == true ? <span className="required-mark">*</span> : null }
                     {title ? `${title} :` : `${name} :`}
