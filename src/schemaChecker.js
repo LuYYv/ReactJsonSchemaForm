@@ -10,7 +10,8 @@ const itemsCheck = (schema) => {
         throw `${schema} is uncompleted `
 
     const {checker, props} = checkerMap[schema.type];
-    if (checker == undefined || props == undefined) throw `type is unexpected at ${schema} `
+    if (checker == undefined || props == undefined) 
+        throw `type is unexpected `
     checker(schema, props);
 }
 
@@ -26,7 +27,6 @@ const checker = (schema, props) =>{
 
 const objectChecker = (schema) => {
     checker(schema, objectProps);
-
     const {properties, require} = schema
 
     if(properties == undefined || JSON.stringify(properties)==="{}") 
@@ -37,10 +37,11 @@ const objectChecker = (schema) => {
 
     if(require) {
         Array.from(require).map( i=> {
+            console.log(properties[i]);
             if (properties[i] == undefined) 
                 throw `require ${i} at ${schema.title} is redundancy`
-            if (typeof properties[i] == "object")
-                throw `${properties[i]} cannot be required`;
+            if (properties[i].type !=undefined && properties[i].type === "object" )
+                throw `object cannot be required`;
         })
     }
 }
@@ -67,8 +68,8 @@ const stringProps = {
 }
 
 const checkerMap = {
-    object: {checker:objectChecker, props:objectProps},
-    number: {checker, props:numberProps},
-    string: {checker, props:stringProps}
+    object: {checker: objectChecker, props: objectProps},
+    number: {checker, props: numberProps},
+    string: {checker, props: stringProps}
 }
 
