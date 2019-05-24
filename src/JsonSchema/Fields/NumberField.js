@@ -9,6 +9,7 @@ class NumberField extends Component {
     }
 
     handChange ({floatValue}) {
+        console.log(floatValue);
         const {formData, onChange, $id} = this.props;
         if ( onChange === undefined ) return formData;
         onChange ( floatValue, $id);
@@ -24,10 +25,25 @@ class NumberField extends Component {
                     <NumberFormat
                         value= {formData}
                         onValueChange={this.handChange}
+                        customInput={Input}
+                        mask="_"
                         />
                 </div>
             </div>
          );
+    }
+}
+
+class Input extends Component {
+    constructor(props) {
+        super(props);
+        console.log(props);
+    }
+    render() {
+        return (
+            <input className="hehe" value={this.props.value} onChange={this.props.onChange}
+                 />
+        )
     }
 }
  

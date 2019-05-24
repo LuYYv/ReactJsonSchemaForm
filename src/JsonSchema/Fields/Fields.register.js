@@ -2,11 +2,13 @@ import React from 'react';
 import StringField from './StringField';
 import NumberField from './NumberField';
 import ObjectField from './ObjectField';
+import ArrayField from './ArrayField';
 
 const fieldMap = {
     "object": ObjectField,
     "string": StringField,
-    "number": NumberField
+    "number": NumberField,
+    "array": ArrayField,
 }
 
 

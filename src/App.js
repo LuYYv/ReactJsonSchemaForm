@@ -19,7 +19,7 @@ class App extends Component {
 
     componentDidMount() {
         const {jsonSchema, formData, uiData} = this.props;
-        schemaChecker(jsonSchema);
+        schemaChecker(jsonSchema); //会崩
         let defFormData = transDefData(jsonSchema);
         let _formData = _.merge(defFormData, formData); 
         this.setState({

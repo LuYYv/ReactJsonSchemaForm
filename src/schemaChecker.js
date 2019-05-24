@@ -11,8 +11,9 @@ const check = ({schema, path}) => {
         throw `type is required at ${path}`
 
     const checker = checkerMap[schema.type];
-    if (checker == undefined ) 
-        throw `type of "${schema.type}" is undefined at ${path} `
+    if (checker == undefined) {
+        throw `type of "${schema.type}" is undefined at ${path}`
+    }
     checker({schema, path: schema.title ? `${path}.${schema.title}` : path});
 }
 

@@ -8,8 +8,8 @@ class BooleanField extends Component {
     render() { 
         const {schema, formData, uiSchema, $id} = this.props;
         return ( 
-            <div className={$id}>
-                boolean
+            <div className="boolen-wrapper">
+            
             </div>
          );
     }

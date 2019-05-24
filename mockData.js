@@ -28,6 +28,14 @@ export const schema = {
             "type": "string",
             "title": "我的邀请码"
         },
+        "arrattest": {
+            "type": "array",
+            "title": "array",
+            "items":{
+                "type": "string",
+                "title": "hehe",
+            }
+        },
         "businessLicenseInfo": {
             "type": "object",
             "title": "企业基本信息",

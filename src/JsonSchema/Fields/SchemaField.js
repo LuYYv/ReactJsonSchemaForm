@@ -3,12 +3,11 @@ import {fieldRegister} from './Fields.register';
 
 class SchemaField extends Component {
 
-
-    render() { 
+    render() {
         let Field = fieldRegister(this.props.schema.type)
         return (
                 <Field 
-                    {...this.props}/>
+                    {...this.props} />
         )
    }
 }
