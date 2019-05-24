@@ -39,10 +39,14 @@
             font-size: 23px;
         }
         .input {
-            position: absolute;
-            right: 10%;
-            width: 450px;
-            height: 90%;
+                position: absolute;
+                right: 10%;
+                width: 450px;
+                height: 90%;
+            input{
+                width: 100%;
+                height: 100%;
+            }
         }
 
     }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import NumberFormat from 'react-number-format';
 
 class NumberField extends Component {
     constructor(props) {
@@ -7,22 +8,24 @@ class NumberField extends Component {
         this.state = {  }
     }
 
-    handChange (e) {
+    handChange ({floatValue}) {
         const {formData, onChange, $id} = this.props;
         if ( onChange === undefined ) return formData;
-        onChange (e.target.value === "" ? undefined : e.target.value, $id);
+        onChange ( floatValue, $id);
     }
 
     render() { 
-        const {schema:{type, title, mustFill}, formData, uiSchema, $id} = this.props;
+        const {schema:{title, mustFill}, formData, uiSchema, $id} = this.props;
         return ( 
             <div className="input-wrapper number-field">
                 <span className="label">{title} :</span>
                 {mustFill?<span className="must-fill">*</span>:null}
-                <input className="input"
-                    type={type}
-                    value={formData || ""}
-                    onChange={this.handChange} />
+                <div className="input">
+                    <NumberFormat
+                        value= {formData}
+                        onValueChange={this.handChange}
+                        />
+                </div>
             </div>
          );
     }

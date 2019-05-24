@@ -13,7 +13,6 @@ class ObjectField extends Component {
         let require = schema.require === undefined ? [] : schema.require;
         let objectProperties = Object.keys(schema.properties).map(i=>{
             let mustFill = require.indexOf(i) !== -1 ? true : false ;
-            console.log(mustFill);
             return <SchemaField
                     mustFill={mustFill}
                     key={`${$id}-${i}`}

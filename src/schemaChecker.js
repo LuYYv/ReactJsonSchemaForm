@@ -1,49 +1,73 @@
 export const schemaChecker = (schema) => {
     if(schema.type !== "object")
         throw `jsonschema root must be object`;
-    itemsCheck(schema);
+    check({schema,path: `root`});
+    return true;
 }
 
 
-const itemsCheck = (schema) => {
-    if (schema.title == undefined || schema.type == undefined)
-        throw `${schema} is uncompleted `
+const check = ({schema, path}) => {
+    if (schema.type == undefined)
+        throw `type is required at ${path}`
 
-    const {checker, props} = checkerMap[schema.type];
-    if (checker == undefined || props == undefined) 
-        throw `type is unexpected `
-    checker(schema, props);
+    const checker = checkerMap[schema.type];
+    if (checker == undefined ) 
+        throw `type of "${schema.type}" is undefined at ${path} `
+    checker({schema, path: schema.title ? `${path}.${schema.title}` : path});
 }
 
-const checker = (schema, props) =>{
+const typeCheck = ({schema, props, path}) =>{
     Object.keys(schema).map( i=> {
         const type = props[i];
-        if(type == undefined)
-            throw `${i} is unexpected at ${schema}`;
+        if(type == undefined) 
+            throw `"${i}" is undefined at ${path}`;
         if(typeof schema[i] !== type)
-            throw `${schema[i]} type error at ${schema}`;
+            throw `typeof ${i} error at ${path}`;
     })
 }
 
-const objectChecker = (schema) => {
-    checker(schema, objectProps);
+const numberCheck = ({schema, path}) => {
+    typeCheck({schema, props: numberProps, path});
+}
+
+const stringCheck = ({schema, path}) => {
+    typeCheck({schema, props: stringProps, path});
+}
+
+const arrayCheck = ({schema, path}) => {
+    typeCheck({schema, props: arrayProps, path});
+    const {items} = schema
+    if (items && items.type && items.type === `array`){
+        throw `items error at ${path}`;
+    }
+    check({schema: items, path: items.title ? `${path}.${items.title}` : path});
+}
+
+const objectCheck = ({schema, path}) => {
+    typeCheck({schema, props: objectProps, path});
     const {properties, require} = schema
 
     if(properties == undefined || JSON.stringify(properties)==="{}") 
-        throw `properties error at ${schema}`;
+        throw `properties error at ${path}`;
     Object.keys(properties).map(i => {
-        itemsCheck(properties[i]);
+        check({schema: properties[i], path: `${path}.${i}`});
     })
 
     if(require) {
         Array.from(require).map( i=> {
-            console.log(properties[i]);
             if (properties[i] == undefined) 
-                throw `require ${i} at ${schema.title} is redundancy`
+                throw `require ${i}  is redundancy at ${path}`
             if (properties[i].type !=undefined && properties[i].type === "object" )
-                throw `object cannot be required`;
+                throw `object cannot be required at ${path}`;
         })
     }
+}
+
+const checkerMap = {
+    object: objectCheck,
+    number: numberCheck,
+    string: stringCheck,
+    array: arrayCheck,
 }
 
 const objectProps = {
@@ -67,9 +91,12 @@ const stringProps = {
     length: "number"
 }
 
-const checkerMap = {
-    object: {checker: objectChecker, props: objectProps},
-    number: {checker, props: numberProps},
-    string: {checker, props: stringProps}
+const arrayProps = {
+    title: "string",
+    type: "string",
+    minItems: "number",
+    items: "object",
 }
+
+
 

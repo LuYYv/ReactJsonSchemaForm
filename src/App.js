@@ -32,9 +32,9 @@ class App extends Component {
 
     handleFormDataChange (value, id) {
         const {formData} = this.state;
+        console.log(value);
         let path = id.split('-').slice(1);
         _.set(formData, path, value);
-        console.log(value);
         this.setState({
             formData
         })

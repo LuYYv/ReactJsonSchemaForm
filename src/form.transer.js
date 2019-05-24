@@ -28,9 +28,7 @@ const objectTranser = (schema, beforePath)=> {
     return JSON.stringify(formData)==="{}" ? undefined : JSON.parse(JSON.stringify(formData));
 }
 
-const itemsTranser = (schema, path, type) => {
-    if(schema.default !== undefined && typeof schema.default !== type)
-        throw `${path} default value type error`
+const itemsTranser = (schema) => {
     return schema.default;
 }
 

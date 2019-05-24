@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 
 class StringField extends Component {
+    constructor () {
+        super ();
+        this.handChange=this.handChange.bind(this)
+    }
+
+
     handChange (e) {
         const {formData, onChange, $id} = this.props;
         if ( onChange === undefined ) 
@@ -14,10 +20,12 @@ class StringField extends Component {
             <div className="input-wrapper string-field">
                 <span className="label">{title} :</span>
                 {mustFill?<span className="must-fill">*</span>:null}
-                <input className="input"
-                    type={type}
-                    value={formData || ""}
-                    onChange={this.handChange} />
+                <div className="input">
+                    <input
+                        type={type}
+                        value={formData || ""}
+                        onChange={this.handChange} />
+                </div>
             </div>
          );
     }
