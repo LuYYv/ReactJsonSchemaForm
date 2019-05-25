@@ -32,7 +32,6 @@ class App extends Component {
 
     handleFormDataChange (value, id) {
         const {formData} = this.state;
-        console.log(value);
         let path = id.split('-').slice(1);
         _.set(formData, path, value);
         this.setState({
@@ -43,6 +42,8 @@ class App extends Component {
     render() {
         if( !this.state.componentInit ) return null;
         const {jsonSchema, formData = {}, uiSchema} = this.state;
+
+
         return (
             <div>
                 <ReactJsonSchema
