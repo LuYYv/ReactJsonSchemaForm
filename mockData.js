@@ -20,20 +20,33 @@
 //     }
 // }
 
+// export const formData = {
+//     "arraytest": [
+//         "1090",
+//         "1090",
+//         "1090",
+
+//     ]
+// }
+
 export const schema = {
     "type": "object",
     "title": "企业信息",
     "properties": {
         "invitationCode": {
             "type": "string",
+            "length": 3,
             "title": "我的邀请码"
         },
-        "arrattest": {
+        "arraytest": {
             "type": "array",
-            "title": "array",
+            "title": "学历",
+            "minItems": 2,
             "items":{
                 "type": "string",
-                "title": "hehe",
+                "title": "入学时间",
+                
+                "default": "hehe",
             }
         },
         "businessLicenseInfo": {
@@ -43,7 +56,7 @@ export const schema = {
             "properties": {
                 "name": {
                     "type": "string",
-                    "title": "企业名称"
+                    "title": "企业名称",
                 },
                 "registeredAddress": {
                     "type": "string",

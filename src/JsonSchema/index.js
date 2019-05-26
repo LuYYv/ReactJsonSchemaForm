@@ -9,12 +9,12 @@ class ReactJsonSchema extends Component {
     }
 
     render() {
-        const {jsonSchema, formData={}, uiSchema} = this.props;
+        const {schema, formData={}, uiSchema} = this.props;
         return (
            <div className="json-schema-container">
                 <SchemaField
                     $id={"root"}
-                    schema={jsonSchema}
+                    schema={schema}
                     formData={formData} 
                     onChange={this.props.onChange} />
            </div>

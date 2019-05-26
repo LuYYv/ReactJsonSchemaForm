@@ -4,7 +4,7 @@ export const transDefData = (schema)=>{
     return objectTranser(schema) || {};
 }
 
-const objectTranser = (schema, beforePath)=> {
+export const objectTranser = (schema, beforePath)=> {
     let formData = {};
     Object.keys(schema.properties).map(i => {
         let p = schema.properties[i];
@@ -28,16 +28,12 @@ const objectTranser = (schema, beforePath)=> {
     return JSON.stringify(formData)==="{}" ? undefined : JSON.parse(JSON.stringify(formData));
 }
 
-const itemsTranser = (schema) => {
+export const itemsTranser = (schema) => {
     return schema.default;
 }
 
-const arrayTranser = (schema, path)=> {
+ const arrayTranser = (schema, path)=> {
     const { items } = schema;
-    
-    if (schema.minItems && typeof schema.minItems === 'number') {  //如果minItems存在且为数字
-        let singleDefault = this.objectParser({ schema: items.properties });
-        return new Array(schema.minItems).fill(JSON.parse(JSON.stringify(singleDefault))); 
-    }
-    return undefined;
+    let singleDefault = items.type == 'object' ?  objectTranser(items.properties) : itemsTranser(items);
+    return new Array(schema.minItems).fill(items.type == 'object' ? JSON.parse(JSON.stringify(singleDefault)) : singleDefault); 
 }
