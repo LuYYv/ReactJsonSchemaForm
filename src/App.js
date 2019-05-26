@@ -4,6 +4,7 @@ import {transDefData} from './form.transer';
 import ReactJsonSchema from './JsonSchema'
 import {schemaChecker} from './schemaChecker'
 import formateCheck from './JsonSchema/formateCheck'
+import './App.scss'
 
 
 class App extends Component {
@@ -46,24 +47,30 @@ class App extends Component {
         const {formData, schema} = this.state;
         const errorSchema = formateCheck({schema, formData});
         _.merge(schema, errorSchema);
-        this.setState ({
-            schema,
-        })
+        if (errorSchema != undefined) {
+            this.setState ({
+                schema,
+            })
+            alert(`格式错误!`)
+        }
+
+        
     }
 
     _createRederDom () {
         if( !this.state.componentInit ) return null;
         const {schema, formData = {}, uiSchema} = this.state;
         const dom = 
-            <div>
+            <div className="container">
                 <ReactJsonSchema
                     schema={schema}
                     formData={formData}
                     uiSchema={uiSchema} 
                     onChange={this.handleFormDataChange} />
                 <div className="submit"
-                    onClick={this.handleSubmit}
-                >提交</div>
+                     onClick={this.handleSubmit}>
+                    <span>提 交</span> 
+                </div>
             </div>
         return dom;
     }
