@@ -3,14 +3,17 @@ import _ from 'lodash';
 import {transDefData} from './form.transer';
 import ReactJsonSchema from './JsonSchema'
 import {schemaChecker} from './schemaChecker'
+import formateCheck from './JsonSchema/formateCheck'
 
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.handleFormDataChange = this.handleFormDataChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this._createRederDom = this._createRederDom.bind(this);
         this.state = {
-            jsonSchema: null,
+            schema: null,
             formData: null,
             uiData: null,
             componentInit: false
@@ -23,7 +26,7 @@ class App extends Component {
         let defFormData = transDefData(jsonSchema);
         let _formData = _.merge(defFormData, formData); 
         this.setState({
-            jsonSchema,
+            schema: jsonSchema,
             formData: _formData,
             uiData,
             componentInit: true
@@ -39,19 +42,36 @@ class App extends Component {
         })
     }
 
-    render() {
+    handleSubmit () {
+        const {formData, schema} = this.state;
+        const errorSchema = formateCheck({schema, formData});
+        _.merge(schema, errorSchema);
+        this.setState ({
+            schema,
+        })
+    }
+
+    _createRederDom () {
         if( !this.state.componentInit ) return null;
-        const {jsonSchema, formData = {}, uiSchema} = this.state;
-
-
-        return (
+        const {schema, formData = {}, uiSchema} = this.state;
+        const dom = 
             <div>
                 <ReactJsonSchema
-                    jsonSchema={jsonSchema}
+                    schema={schema}
                     formData={formData}
                     uiSchema={uiSchema} 
                     onChange={this.handleFormDataChange} />
+                <div className="submit"
+                    onClick={this.handleSubmit}
+                >提交</div>
             </div>
+        return dom;
+    }
+
+    render() {
+
+        return (
+            this._createRederDom()
         );
     }
 }

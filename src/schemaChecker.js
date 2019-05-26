@@ -75,21 +75,27 @@ const objectProps = {
     title: "string",
     type: "string",
     properties: "object",
-    require: "object"
+    require: "object",
 }
 
 const numberProps = {
     title: "string",
     type: "string",
     default: "number",
-    length: "number"
+    length: "number",
+    minLength: "number",
+    maxLength: "number",
+    errorConfig: "string",
 }
 
 const stringProps = {
     title: "string",
     type: "string",
     default: "string",
-    length: "number"
+    length: "number",
+    minLength: "number",
+    maxLength: "number",
+    errorConfig: "string",
 }
 
 const arrayProps = {
@@ -97,6 +103,7 @@ const arrayProps = {
     type: "string",
     minItems: "number",
     items: "object",
+    errorConfig: "object",
 }
 
 

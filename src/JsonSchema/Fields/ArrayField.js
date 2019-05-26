@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import SchemaField from "./SchemaField";
 import _ from "lodash";
 import arrayLayout from '../Layout/ArrayLayout'
+import {itemsTranser, objectTranser } from '../../form.transer';
+
 class ArrayField extends Component {
     constructor(props) {
         super(props);
@@ -38,8 +40,8 @@ class ArrayField extends Component {
     }
 
     addItem () {
-        const {formData, onChange, $id} = this.props;
-        formData.push(undefined);
+        const {schema, formData, onChange, $id} = this.props;
+        formData.push(schema.default);
         onChange(formData, $id);
     }
 
