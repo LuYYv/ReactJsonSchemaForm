@@ -35,7 +35,7 @@ class StringField extends Component {
         const errorConfig = this.state.errorConfig || this.props.schema.errorConfig;
         return ( 
             <div className={`input-wrapper string-field ${errorConfig==undefined ? '' : 'error-field'}`}>
-                <span className="label">{title} :</span>
+                <span className="label">{title}  :</span>
                 {mustFill?<span className="must-fill">*</span>:null}
                 <div className="input">
                     <input

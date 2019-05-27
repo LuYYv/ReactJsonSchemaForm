@@ -10,12 +10,15 @@
     margin: 20px auto;
     padding: 0px;
     width: 800px;
-    color: rgb(50, 50, 50);
+    color: rgb(90, 90, 90);
     h3{
         border-bottom: 1px solid rgb(199, 199, 199);
         margin: 5px 5px 15px 5px;
         padding-bottom: 5px;
         font-size: 17px;
+        font-weight: normal;
+        text-shadow: 5px;
+        color: rgb(54, 54, 54);
     }
     .input-wrapper {
         margin: 15px;
@@ -28,15 +31,16 @@
             height: 100%;
             line-height: 30px;
             font-size: 16px;
-            
+            color: rgb(90, 90, 90);
         }
         .must-fill {
             color: red;
             position: absolute;
-            right: 68%;
+            right: 70.5%;
+            top: -6px;
             height: 100%;
             line-height: 30px;
-            font-size: 23px;
+            font-size: 14px;
         }
         .input {
                 position: absolute;
