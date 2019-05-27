@@ -13,6 +13,7 @@ import _ from 'lodash';
 class FormDataInit {
     constructor(props) {
         this.props = props;
+        this.objectParser = this.objectParser.bind(this);
         this.typeParser = {   //number, string, boolean的方法大致相同，先不拆了，防止个性化
             number: this.numberParser.bind(this),
             string: this.stringParser.bind(this),
@@ -118,12 +119,12 @@ class FormDataInit {
             throw `array schema must have items`;
         }
         const { items } = schema;
-        if (items.type !== 'object') {  //判断item.type是否为object
+        if (items.type != 'object' && this.typeParser[items.type] == undefined) {  //判断item.type是否为object
             console.error(items);
-            throw `array's items's type must be object`;
+            throw `items's type must be one of string. number, boolean, object and array !`
         }
         if (schema.minItems && typeof schema.minItems === 'number') {  //如果minItems存在且为数字
-            let singleDefault = this.objectParser({ schema: items.properties });
+            let singleDefault = items.type == 'object' ? this.objectParser({ schema: items.properties }) || {} : this.typeParser[items.type]({ schema: items });
             let res = Array.apply(null, Array(schema.minItems)).map(() => singleDefault);  //填充
             return res;
         }

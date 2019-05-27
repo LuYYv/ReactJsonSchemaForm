@@ -9,9 +9,10 @@ const layoutMap = {
 }
 
 const getTitleField = ({ schema }) => {
+    if (schema.title == undefined) return null;
     return (
         <div className="title">
-            <TitleField 
+            <TitleField
                 title={schema.title}
             />
         </div>

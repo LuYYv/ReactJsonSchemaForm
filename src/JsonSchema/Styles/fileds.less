@@ -1,5 +1,39 @@
 .array-field {
-
+    padding-bottom: 15px;
+    .array-field-item {
+        border: 1px solid #f0f2f5;
+        margin: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        position: relative;
+        .operation-btn-group {
+            position: absolute;
+            right: -7px;
+            top: -11px;
+            .icon {
+                margin-left: 5px;
+                color: #cecdcd;
+                &:hover { cursor: pointer }
+            }
+            .delete {
+                &:hover { color: red }
+            }
+            .up, .down {
+                &:hover { color: @primary-color }
+            }
+        }
+        .order-mark {
+            position: absolute;
+            font-size: 40px;
+            font-weight: bold;
+            color: #efefef;
+            top: -5px;
+            left: 5px;
+        }
+    }
+    .array-add-button {
+        margin-left: 20px;
+    }
 }
 
 .boolean-field {

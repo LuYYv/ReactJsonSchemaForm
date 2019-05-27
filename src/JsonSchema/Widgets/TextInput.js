@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import FormItem from '../FormItem';
 import { Input } from 'antd';
+import InputFormat from 'react-number-format';
 
 class TextInput extends Component {
     constructor(props) {
@@ -15,6 +16,10 @@ class TextInput extends Component {
 
     render() {
         const { schema, formData, name, required } = this.props;
+        const _props = {
+            value: formData,
+            onChange: this.onChange
+        }
         return (
             <FormItem
                 name={name}
@@ -22,13 +27,29 @@ class TextInput extends Component {
                 required={required}
                 className="text-input-widget"
             >
-                <Input
-                    value={formData}
-                    onChange={this.onChange}
-                />
+                <NormalText {..._props} />
             </FormItem>
         );
     }
 }
+
+/**
+ * 普通文本输入框
+ */
+class NormalText extends Component {
+    render() {
+        const { value, onChange } = this.props;
+        return (
+            <Input
+                value={value}
+                onChange={onChange}
+            />
+        )
+    }
+}
+
+/**
+ * 带有特殊format的输入框
+ */
 
 export default TextInput;
