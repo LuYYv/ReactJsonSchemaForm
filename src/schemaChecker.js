@@ -101,9 +101,11 @@ const stringProps = {
 const arrayProps = {
     title: "string",
     type: "string",
-    minItems: "number",
     items: "object",
     errorConfig: "object",
+    minItems: "number",
+    maxItems: "number",
+    moveAble: "boolean",
 }
 
 

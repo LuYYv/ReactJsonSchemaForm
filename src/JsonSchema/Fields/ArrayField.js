@@ -12,13 +12,32 @@ class ArrayField extends Component {
         this.deleteItem = this.deleteItem.bind(this);
         this.moveItem = this.moveItem.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this._createHandleDom = this._createHandleDom.bind(this);
         this.state = {  }
     }
 
+    _createHandleDom (i) {
+        const {schema:{moveAble=false}} = this.props;
+        if ( moveAble ) {
+            return (
+                <div className="item-handle" >
+                        <span className="up" onClick={()=>(this.moveItem({direct:"up", index:i}))}>上移</span>
+                        <span className="down" onClick={()=>{this.moveItem({direct:"down", index:i})}}>下移</span>
+                        <span className="delete" onClick={()=>(this.deleteItem(i))} >删除</span>
+                    </div>
+            )
+        }
+        return (
+            <div className="item-handle" >
+                        <span className="delete" onClick={()=>(this.deleteItem(i))} >删除</span>
+            </div>
+        )
+    }
+
     _createRederDom () {
-        const {schema, schema:{minItems=1, items}, formData, $id} = this.props;
+        const {schema, schema:{minItems=1, items, maxItems=10000,}, formData, $id} = this.props;
         let itemsArray = [];
-        for (let i=0; (i<minItems || i<formData.length); i++ ) {
+        for (let i=0; (i<minItems || i<formData.length) && i < maxItems; i++ ) {
             const value = formData[i] ? formData[i] : undefined;
             itemsArray.push (
                 <div className="array-items" key={i}>
@@ -27,16 +46,11 @@ class ArrayField extends Component {
                         formData = {value}
                         $id={`${$id}-${i}`}
                         onChange={this.handleChange} />
-                    <div className="item-handle" >
-                        <span className="up" onClick={()=>(this.moveItem({direct:"up", index:i}))}>上移</span>
-                        <span className="down" onClick={()=>{this.moveItem({direct:"down", index:i})}}>下移</span>
-                        <span className="delete" onClick={()=>(this.deleteItem(i))} >删除</span>
-                    </div>
+                    {this._createHandleDom(i)}
                 </div>
-                
             )
         }
-        return arrayLayout({itemsArray, addItem: this.addItem, schema })
+        return arrayLayout({itemsArray, addItem: this.addItem, schema, addAble: formData.length < maxItems})
     }
 
     addItem () {

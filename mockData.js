@@ -42,10 +42,11 @@ export const schema = {
             "type": "array",
             "title": "学历",
             "minItems": 2,
+            "maxItems": 5,
+            "moveAble": false,
             "items":{
                 "type": "string",
                 "title": "入学时间",
-                
                 "default": "hehe",
             }
         },

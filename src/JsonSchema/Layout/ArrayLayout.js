@@ -2,7 +2,7 @@
 import React from 'react';
 import '../style/ArrayField.scss';
 
-const arrayLayout = ({ itemsArray, addItem , schema})=> {
+const arrayLayout = ({ itemsArray, addItem , schema, addAble})=> {
     return (
         <div className="array-field">
             <h3 className="title">
@@ -10,7 +10,7 @@ const arrayLayout = ({ itemsArray, addItem , schema})=> {
             </h3>
             <div className="array-wrapper">
                 {itemsArray}
-                <span className="add-item" onClick={addItem}>添加</span>
+                {addAble ? <span className="add-item" onClick={addItem}>添加</span> : null}
             </div>
         </div>
     )
