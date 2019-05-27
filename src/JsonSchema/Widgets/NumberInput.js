@@ -26,6 +26,7 @@ class NumberInput extends Component {
                     customInput={Input}
                     value={formData}
                     onValueChange={this.onChange}
+                    maxLength={15}   //默认最大长度15， 定义的最大长度不能超过15
                 />
             </FormItem>
         );

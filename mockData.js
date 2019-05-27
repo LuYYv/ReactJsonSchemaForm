@@ -130,7 +130,7 @@ export const schema = {
 }
 
 export const formData = {
-    "invitationCode": "111111hahahah",
+    "invitationCode": "11111",
     "businessLicenseInfo": {
         "name": "奥特曼有限公司"
     }

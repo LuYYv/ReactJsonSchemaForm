@@ -49,9 +49,7 @@ class ReactJsonForm extends Component {
         let _path = path.split('.').splice(1).join('.');
         let _formData = JSON.parse(JSON.stringify(this.state.formData));
         _.set(_formData, _path, e);
-        this.setState({ formData: JSON.parse(JSON.stringify(_formData)) }, () => {
-            console.log(this.state.formData);
-        });
+        this.setState({ formData: JSON.parse(JSON.stringify(_formData)) });
     }
 
     render() {
