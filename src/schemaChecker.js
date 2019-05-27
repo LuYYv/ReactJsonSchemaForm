@@ -88,6 +88,7 @@ const numberProps = {
     maxLength: "number",
     errorConfig: "string",
     readOnly: "boolean",
+    dependency: "string",
 }
 
 const stringProps = {
@@ -99,6 +100,7 @@ const stringProps = {
     maxLength: "number",
     errorConfig: "string",
     readOnly: "boolean",
+    dependency: "string",
 }
 
 const arrayProps = {

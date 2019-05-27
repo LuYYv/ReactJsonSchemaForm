@@ -17,14 +17,16 @@ class App extends Component {
             schema: null,
             formData: null,
             uiData: null,
-            componentInit: false
+            componentInit: false,
         }
+        this.dependencyMap = {};
     }
 
     componentDidMount() {
         const {jsonSchema, formData, uiData} = this.props;
         schemaChecker(jsonSchema); //会崩
-        let defFormData = transDefData(jsonSchema);
+        let {defFormData, dependencyMap} = transDefData(jsonSchema);
+        this.dependencyMap = dependencyMap;
         let _formData = _.merge(defFormData, formData); 
         this.setState({
             schema: jsonSchema,
@@ -35,12 +37,17 @@ class App extends Component {
     }
 
     handleFormDataChange (value, id) {
+        console.log(id);
         const {formData} = this.state;
         let path = id.split('-').slice(1);
         _.set(formData, path, value);
         this.setState({
             formData
-        })
+        });
+        const dependencyTarget = this.dependencyMap[path.join("-")]
+        if (dependencyTarget != undefined) {
+            this.handleFormDataChange (value, 'root-'+dependencyTarget);
+        }
     }
 
     handleSubmit () {

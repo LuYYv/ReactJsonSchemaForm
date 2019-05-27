@@ -30,7 +30,7 @@ class StringField extends Component {
     }
 
     render() { 
-        const {schema:{type, title, readOnly}, mustFill, formData, uiSchema, $id} = this.props;
+        const {schema:{type, title, readOnly, dependency}, mustFill, formData, uiSchema, $id} = this.props;
         const errorConfig = this.state.errorConfig || this.props.schema.errorConfig;
         return ( 
             <div className={`input-wrapper string-field ${errorConfig==undefined ? '' : 'error-field'} ${readOnly ? "readOnly" : ""}`} >

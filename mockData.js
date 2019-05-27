@@ -57,6 +57,15 @@ export const schema = {
             "title": "企业基本信息",
             "require": ["name", "registeredAddress"],
             "properties": {
+                "a": {
+                    "title": "a",
+                    "type": "string",
+                },
+                "b": {
+                    "title": "b",
+                    "type": "string",
+                    "dependency": "businessLicenseInfo-a",
+                },
                 "name": {
                     "type": "string",
                     "title": "企业名称",
