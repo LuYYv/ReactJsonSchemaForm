@@ -10,7 +10,8 @@ class ObjectField extends Component {
 
     _createRender () {
         const {schema, formData = {}, uiSchema, $id} = this.props;
-        let require = schema.require === undefined ? [] : schema.require;
+        const readOnly = schema.readOnly == undefined ? false : schema.readOnly
+        const require = schema.require === undefined ? [] : schema.require;
         let objectProperties = Object.keys(schema.properties).map(i=>{
             let mustFill = require.indexOf(i) !== -1 ? true : false ;
             return <SchemaField
@@ -20,6 +21,7 @@ class ObjectField extends Component {
                     schema={schema.properties[i]}
                     formData={formData[i]}
                     onChange={this.props.onChange}
+                    readOnly={readOnly}
                  />
         })
 

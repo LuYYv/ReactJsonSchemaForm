@@ -35,7 +35,7 @@ class ArrayField extends Component {
     }
 
     _createRederDom () {
-        const {schema, schema:{minItems=1, items, maxItems=10000,}, formData, $id} = this.props;
+        const {schema, schema:{minItems=1, items, maxItems=10000,readOnly}, formData, $id} = this.props;
         let itemsArray = [];
         for (let i=0; (i<minItems || i<formData.length) && i < maxItems; i++ ) {
             const value = formData[i] ? formData[i] : undefined;
@@ -45,7 +45,8 @@ class ArrayField extends Component {
                         schema = {items}
                         formData = {value}
                         $id={`${$id}-${i}`}
-                        onChange={this.handleChange} />
+                        onChange={this.handleChange}
+                        readOnly={readOnly} />
                     {this._createHandleDom(i)}
                 </div>
             )

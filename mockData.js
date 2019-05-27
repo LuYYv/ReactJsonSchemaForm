@@ -36,7 +36,9 @@ export const schema = {
         "invitationCode": {
             "type": "string",
             "length": 3,
-            "title": "我的邀请码"
+            "title": "我的邀请码",
+            "readOnly": true,
+            "default": "sdfsdf"
         },
         "arraytest": {
             "type": "array",

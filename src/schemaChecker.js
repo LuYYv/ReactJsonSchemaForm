@@ -76,6 +76,7 @@ const objectProps = {
     type: "string",
     properties: "object",
     require: "object",
+    readOnly: "boolean",
 }
 
 const numberProps = {
@@ -86,6 +87,7 @@ const numberProps = {
     minLength: "number",
     maxLength: "number",
     errorConfig: "string",
+    readOnly: "boolean",
 }
 
 const stringProps = {
@@ -96,6 +98,7 @@ const stringProps = {
     minLength: "number",
     maxLength: "number",
     errorConfig: "string",
+    readOnly: "boolean",
 }
 
 const arrayProps = {
@@ -106,6 +109,7 @@ const arrayProps = {
     minItems: "number",
     maxItems: "number",
     moveAble: "boolean",
+    readOnly: "boolean",
 }
 
 

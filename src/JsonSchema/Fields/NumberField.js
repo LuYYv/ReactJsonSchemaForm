@@ -12,8 +12,8 @@ class NumberField extends Component {
     }
 
     handleChange ({floatValue}) {
-        const {formData, onChange, $id} = this.props;
-        if ( onChange === undefined ) return formData;
+        const {formData, onChange, $id, schema:{readOnly}} = this.props;
+        if ( readOnly || onChange === undefined ) return formData;
         onChange ( floatValue, $id);
     }
 
@@ -27,10 +27,10 @@ class NumberField extends Component {
     }
 
     render() { 
-        const {schema:{title, mustFill}, formData, uiSchema, $id} = this.props;
+        const {schema:{title, mustFill, readOnly,}, formData, uiSchema, $id} = this.props;
         const errorConfig = this.state.errorConfig || this.props.schema.errorConfig;
         return ( 
-            <div className={`input-wrapper number-field ${errorConfig ? 'error-field' : ''}`}>
+            <div className={`input-wrapper number-field ${errorConfig ? 'error-field' : ''} ${readOnly ? "readOnly" : ""}`}>
                 <span className="label">{title} :</span>
                 {mustFill?<span className="must-fill">*</span>:null}
                 <div className="input">

@@ -13,9 +13,8 @@ class StringField extends Component {
 
 
     handleChange (e) {
-        const {formData, onChange, $id} = this.props;
-        if ( onChange === undefined ) 
-            throw `${$id} onChange is required`;
+        const {formData, onChange, $id, schema:{readOnly}} = this.props;
+        if ( readOnly || onChange === undefined ) return;
         onChange (e.target.value === "" ? undefined : e.target.value, $id);
     }
 
@@ -31,10 +30,10 @@ class StringField extends Component {
     }
 
     render() { 
-        const {schema:{type, title, }, mustFill, formData, uiSchema, $id} = this.props;
+        const {schema:{type, title, readOnly}, mustFill, formData, uiSchema, $id} = this.props;
         const errorConfig = this.state.errorConfig || this.props.schema.errorConfig;
         return ( 
-            <div className={`input-wrapper string-field ${errorConfig==undefined ? '' : 'error-field'}`}>
+            <div className={`input-wrapper string-field ${errorConfig==undefined ? '' : 'error-field'} ${readOnly ? "readOnly" : ""}`} >
                 <span className="label">{title}  :</span>
                 {mustFill?<span className="must-fill">*</span>:null}
                 <div className="input">
