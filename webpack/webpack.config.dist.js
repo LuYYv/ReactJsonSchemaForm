@@ -23,7 +23,6 @@ module.exports = {
             },
             {
                 test: /\.(css|scss)$/,
-                exclude: /node_modules/,
                 loader: ExtractTextPlugin.extract({ use: ['css-loader', 'sass-loader'] })
             },
             {

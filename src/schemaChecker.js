@@ -35,6 +35,10 @@ const stringCheck = ({schema, path}) => {
     typeCheck({schema, props: stringProps, path});
 }
 
+const booleanCheck = ({schema, path}) => {
+    typeCheck({schema, props: booleanProps, path});
+}
+
 const arrayCheck = ({schema, path}) => {
     typeCheck({schema, props: arrayProps, path});
     const {items} = schema
@@ -69,6 +73,7 @@ const checkerMap = {
     number: numberCheck,
     string: stringCheck,
     array: arrayCheck,
+    boolean: booleanCheck,
 }
 
 const objectProps = {
@@ -112,6 +117,12 @@ const arrayProps = {
     maxItems: "number",
     moveAble: "boolean",
     readOnly: "boolean",
+}
+
+const booleanProps = {
+    title: "string",
+    type: "string",
+    default: "boolean",
 }
 
 

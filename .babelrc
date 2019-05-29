@@ -6,5 +6,7 @@
     "plugins": [
         "transform-object-assign",
         "transform-object-rest-spread"
-    ]
+    ],
+    "comments": false,
+     "minified": true,
 }

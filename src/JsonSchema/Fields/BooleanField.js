@@ -6,13 +6,16 @@ class BooleanField extends Component {
         this.state = {  }
     }
     render() { 
-        const {schema, formData, uiSchema, $id} = this.props;
+        const {schema:{title}, formData, uiSchema, $id} = this.props;
         return ( 
-            <div className="boolen-wrapper">
-            
-            </div>
+            <div className="boolen-field" >
+                <form >
+                    <input name="是" type="radio" value="true"/>
+                    <input name="否" type="radio" value="false"/>
+                </form>
+           </div>
          );
     }
 }
  
-export default NumberField;
+export default BooleanField;

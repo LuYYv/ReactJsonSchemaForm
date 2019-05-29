@@ -1,23 +1,25 @@
 {
-  "name": "reactwebpackcli",
-  "version": "1.0.0",
+  "name": "react-jsonschema-yyv",
+  "version": "1.0.4",
   "description": "",
-  "main": "index.js",
+  "main": "lib/App.js",
   "scripts": {
     "start": "webpack-dev-server --config webpack/webpack.config.dev.js",
-    "dist": "webpack --config webpack/webpack.config.dist.js -p"
+    "dist": "webpack --config webpack/webpack.config.dist.js -p",
+    "pp": "babel src -d lib --copy-files"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Cavendichun/ReactWebpackCli.git"
+    "url": "git+https://github.com/LuYYv/ReactJsonSchemaForm.git"
   },
-  "author": "",
+  "author": "yyv",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Cavendichun/ReactWebpackCli/issues"
+    "url": "https://github.com/LuYYv/ReactJsonSchemaForm/issues"
   },
-  "homepage": "https://github.com/Cavendichun/ReactWebpackCli#readme",
+  "homepage": "https://github.com/LuYYv/ReactJsonSchemaForm#readme",
   "dependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-plugin-transform-object-assign": "^6.22.0",
@@ -27,7 +29,9 @@
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "lodash": "^4.17.11",
     "react": "^16.4.0",
+    "react-cli": "^0.3.1",
     "react-dom": "^16.4.0",
+    "react-jsonschema-yyv": "^1.0.3",
     "react-number-format": "^4.0.8"
   },
   "devDependencies": {

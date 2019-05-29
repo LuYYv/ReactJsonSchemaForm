@@ -38,7 +38,11 @@ export const schema = {
             "length": 3,
             "title": "我的邀请码",
             "readOnly": true,
-            "default": "sdfsdf"
+            "default": "sdf"
+        },
+        "booleanField": {
+            "title": "boolean",
+            "type": "boolean",
         },
         "arraytest": {
             "type": "array",
@@ -65,6 +69,7 @@ export const schema = {
                     "title": "b",
                     "type": "string",
                     "dependency": "businessLicenseInfo-a",
+                    "readOnly": true,
                 },
                 "name": {
                     "type": "string",

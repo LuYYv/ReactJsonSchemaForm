@@ -44,6 +44,7 @@ class App extends Component {
         this.setState({
             formData
         });
+        console.log(this.dependencyMap);
         const dependencyTarget = this.dependencyMap[path.join("-")]
         if (dependencyTarget != undefined) {
             this.handleFormDataChange (value, 'root-'+dependencyTarget);
