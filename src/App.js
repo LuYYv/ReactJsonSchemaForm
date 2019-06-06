@@ -68,7 +68,7 @@ class App extends Component {
     _createRederDom () {
         if( !this.state.componentInit ) return null;
         const {schema, formData = {}, uiSchema} = this.state;
-        const dom = 
+        const dom =( 
             <div className="container">
                 <ReactJsonSchema
                     schema={schema}
@@ -79,7 +79,7 @@ class App extends Component {
                      onClick={this.handleSubmit}>
                     <span>提 交</span> 
                 </div>
-            </div>
+            </div>)
         return dom;
     }
 
