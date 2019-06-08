@@ -1,13 +1,12 @@
 import React from 'react';
 import { render } from 'react-dom';
-import App from 'react-jsonschema-yyv';
-// import App from '../lib/App';
+import Form from './Form/Form';
 import {schema, formData} from '../mockData'
 
 
 render(
-    <App jsonSchema={schema}
-        formData={formData}
-        uiSchema={{}} />,
+    <Form 
+        schema={schema}
+        formData={formData} />,
     document.getElementById('root')
 )

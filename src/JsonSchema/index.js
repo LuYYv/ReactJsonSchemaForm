@@ -1,26 +1,17 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import SchemaField from './Fields/SchemaField'
-import "./style/index.scss";
 
-class ReactJsonSchema extends Component {
-    constructor () {
-        super();
-        this.state = { }
-    }
-
-    render() {
-        const {schema, formData={}, uiSchema} = this.props;
-        return (
-           <div className="json-schema-container">
-                <SchemaField
-                    $id={"root"}
-                    schema={schema}
-                    formData={formData} 
-                    onChange={this.props.onChange} />
-           </div>
-        )
-    }
-
+const ReactJsonSchema = (props) => {
+  if(props.schema && props.formData) {
+    return (
+      <div className="json-schema-container">
+        <SchemaField
+          $id={"root"}
+          { ...props } />
+      </div>
+    )
+  }
+  return props.children;
 }
 
-export default ReactJsonSchema;
+export default ReactJsonSchema

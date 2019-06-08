@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
-import {fieldRegister} from './Fields.register';
+import React from 'react';
+import {useFieldParser} from './Fields.register';
 
-class SchemaField extends Component {
 
-    render() {
-        let Field = fieldRegister(this.props.schema.type)
-        return (
-                <Field 
-                    {...this.props} />
-        )
-   }
+const SchemaField = (props) => {
+    console.log(props);
+    let Field = useFieldParser(props.schema.type)
+    return (
+      <Field 
+        {...props} />
+    )
 }
- 
+
 export default SchemaField;

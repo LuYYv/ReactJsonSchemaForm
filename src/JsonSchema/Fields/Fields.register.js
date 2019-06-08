@@ -14,7 +14,7 @@ const fieldMap = {
 }
 
 
-export const fieldRegister = (type)=> {
+export const useFieldParser = (type)=> {
         const Field = fieldMap[type];
         if (Field == undefined) throw "schema error";
         return (
