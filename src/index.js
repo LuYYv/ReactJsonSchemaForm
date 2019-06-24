@@ -1,8 +1,12 @@
 import React from 'react';
 import { render } from 'react-dom';
-import App from './App';
+import {schema, formData} from '../mockData'
+import Form from "./Form";
+
 
 render(
-    <App />,
+    <Form
+      schema={schema}
+      formData={formData} />,
     document.getElementById('root')
 )

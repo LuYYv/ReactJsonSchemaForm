@@ -10,7 +10,7 @@ const { LISTEN_PORT = 3000, BACKEND, TITLE } = app_config;
 module.exports = {
     mode: 'development',
     entry: path.resolve(__dirname, '../src/index.js'),
-    devtool: 'cheap-module-eval-source-map',
+    devtool: 'source-map',
     devServer: {
         historyApiFallback: true,
         inline: true,  //自动刷新
