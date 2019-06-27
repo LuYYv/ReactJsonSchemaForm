@@ -1,26 +1,24 @@
-import React, {Component} from 'react';
-import StringField from './StringField';
-import NumberField from './NumberField';
+import React from 'react';
+import BasicField from './BasicField';
 import ObjectField from './ObjectField';
+import ArrayField from './ArrayField'
 
-class SchemaField extends Component {
-  render() { 
-    let Field = renderField(this.props.schema.type)
+const SchemaField = (props) => {
+    let Field = renderField(props.schema.type)
     return (
       <Field 
-        {...this.props} />
+        {...props} />
     ) 
-  }
 }
 
 
-export const renderField = (type)=> {
+const renderField = (type)=> {
   const fieldMap = {
     "object": ObjectField,
-    "string": StringField,
-    "number": NumberField,
-    // "array": ArrayField,
-    // "boolean": BooleanField,
+    "string": BasicField,
+    "number": BasicField,
+    "array": ArrayField,
+    "boolean": BasicField,
   }
   return fieldMap[type];
 }

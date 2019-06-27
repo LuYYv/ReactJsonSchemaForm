@@ -3,9 +3,8 @@ import { InputNumber } from 'antd';
 
 const DefaultStringWidget = (props) => {
     return ( 
-      <InputNumber { ...props }></InputNumber>
+      <InputNumber { ...props }/>
      );
-
 }
  
 export default DefaultStringWidget;

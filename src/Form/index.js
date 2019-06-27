@@ -12,6 +12,7 @@ class App extends Component {
             formData: null,
             componentInit: false,
         }
+        this.handleFormDataChange = this.handleFormDataChange.bind(this);
     }
 
     componentDidMount() {
@@ -25,14 +26,23 @@ class App extends Component {
         })
     }
 
+    handleFormDataChange({value, id}) {
+        const _formData = JSON.parse(JSON.stringify(this.state.formData));
+        let path = id.split('-').slice(1).join(`.`);
+        _.set(_formData, path, value);
+        this.setState({
+            formData: _formData
+        });
+    }
+
     render() {
       if( !this.state.componentInit ) return null;
       const {schema, formData={}} = this.state;
       return ( 
         <ReactJsonSchema
           schema={schema}
-          formData={formData} />
-          // onChange={this.handleFormDataChange} />
+          formData={formData}
+          onChange={this.handleFormDataChange} />
       )
     }
 }

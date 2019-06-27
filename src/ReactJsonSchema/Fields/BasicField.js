@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import Widget from "../Widgets";
-import { Input } from 'antd'
+import { TitleField } from './TitleField';
 
-
-
-class StringField extends Component {
+class BasicField extends Component {
   constructor(props) {
     super(props);
     this.state = {  }
@@ -12,13 +10,15 @@ class StringField extends Component {
   }
 
   handleChange (value) {
-    console.log(value);
+    this.props.onChange({value, id: this.props.$id});
   } 
 
   render() { 
-    const { schema, formData, $id } = this.props;
+    const {schema, formData} = this.props;
     return ( 
-      <div>
+      <div className="basicField">
+        <TitleField 
+          title={schema.title} />
         <Widget
           schema={schema}
           formData={formData}
@@ -28,4 +28,4 @@ class StringField extends Component {
   }
 }
  
-export default StringField;
+export default BasicField;

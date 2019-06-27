@@ -2,18 +2,34 @@ export const schema = {
     "type": "object",
     "title": "test",
     "properties": {
-        "base_info": {
+        "ObjectField": {
             "type": "object",
             "title": "基本信息",
             "properties": {
-                "name": {
+                "StringField": {
                     "type": "string",
-                    "title": "姓名",
-                    "default": "bichun"
+                    "title": "StringField",
+                    "default": "string"
                 },
-                "age": {
+                "NumberField": {
                     "type": "number",
-                    "title": "age"
+                    "title": "NumberField",
+                    "default": "250",
+                },
+                "BooleanField": {
+                    "type": "boolean",
+                    "title": "BooleanField",
+                    "default": false,
+                },
+                "ArrayField": {
+                    "type": "array",
+                    "title": "ArrayField",
+                    "minLens": 2,
+                    "items": {
+                        "type": "string",
+                        "title": "Array-StringField",
+                        "default": "array-string"
+                    }
                 }
             }
         }
@@ -21,8 +37,12 @@ export const schema = {
 }
 
 export const formData = {
-    "base_info":{
-        "name":"bibichun",
-        "age": "3"
+    "ObjectField":{
+        "ArrayField": [
+            "a",
+            "b",
+            "c"
+        ]
     }
+
 }

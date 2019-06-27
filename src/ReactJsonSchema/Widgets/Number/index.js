@@ -5,6 +5,11 @@ class NumberWidget extends Component {
   constructor(props) {
     super(props);
     this.state = {  }
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(value) {
+    this.props.onChange(value);
   }
 
   render() { 
@@ -13,7 +18,7 @@ class NumberWidget extends Component {
       <Widget
         schema={schema}
         value={formData}
-        onChange={onChange} />
+        onChange={this.handleChange} />
      );
   }
 }

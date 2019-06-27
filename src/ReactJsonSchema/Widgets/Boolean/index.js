@@ -1,25 +1,24 @@
 import React, {Component} from 'react';
 import DefaultWidget from "./DefaultWidget";
 
-class StringWidget extends Component {
+class BooleanWidget extends Component {
   constructor(props) {
     super(props);
-    this.state = {  };
+    this.state = {  }
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(e) {
-    const value = e.target.value;
-    this.props.onChange(value);
+    this.props.onChange(e.target.value);
   }
 
   render() { 
-    const { schema, formData, onChange } = this.props;
+    const { schema, formData } = this.props;
     return ( 
       <Widget
         schema={schema}
         value={formData}
-        onChange={this.handleChange } />
+        onChange={this.handleChange} />
      );
   }
 }
@@ -34,4 +33,4 @@ const Widget =  (props) => {
   })()
 }
 
-export default StringWidget;
+export default BooleanWidget;

@@ -36,5 +36,5 @@ export const itemsTranser = (schema, path) => {
 const arrayTranser = (schema, path)=> {
   const { items } = schema;
   let singleDefault = items.type == 'object' ?  objectTranser(items.properties, ) : itemsTranser(items);
-  return new Array(schema.minItems).fill(items.type == 'object' ? JSON.parse(JSON.stringify(singleDefault)) : singleDefault); 
+  return new Array(schema.minLens).fill(items.type == 'object' ? JSON.parse(JSON.stringify(singleDefault)) : singleDefault); 
 }

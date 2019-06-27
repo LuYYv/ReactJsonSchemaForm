@@ -27,9 +27,20 @@ module.exports = {
                 loader: 'babel-loader'
             },
             {
-                test: /\.(css|scss)$/,
+                test: /\.(css|sass)$/,
                 exclude: /node_modules/,
                 loader: ExtractTextPlugin.extract({ use: ['css-loader', 'sass-loader'] })
+            },
+            {
+                test: /\.(less)$/,
+                // exclude: /node_modules/,
+                loader: ExtractTextPlugin.extract({ 
+                    use: [
+                        'css-loader', 
+                        'sass-loader',
+                        { loader: 'less-loader', options: { javascriptEnabled: true } }
+                    ] 
+                })
             },
             {
                 test: /\.(png|jpg|gif)$/,
