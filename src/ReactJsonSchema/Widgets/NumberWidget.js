@@ -1,10 +1,10 @@
 import React from 'react';
 import { InputNumber } from 'antd';
 
-const DefaultStringWidget = (props) => {
+const NumberWidget = (props) => {
     return ( 
       <InputNumber { ...props }/>
      );
 }
  
-export default DefaultStringWidget;
+export default NumberWidget;

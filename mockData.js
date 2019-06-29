@@ -5,33 +5,36 @@ export const schema = {
         "ObjectField": {
             "type": "object",
             "title": "object-测试",
+            "require": [
+                "StringField",
+            ],
             "properties": {
                 "StringField": {
                     "type": "string",
-                    "title": "StringField",
+                    "title": "string-测试",
                     "default": "string",
-                    "minLength": "2",
-                    "maxLength": "5",
                 },
                 "NumberField": {
                     "type": "number",
-                    "title": "NumberField",
-                    "require": true,
+                    "title": "number-测试",
                     "default": "250",
+                    "minLength": "2",
+                    "maxLength": "5",
+                    "widget": "number",
+                    "help": "长度为2-5位的数字",
                 },
                 "BooleanField": {
                     "type": "boolean",
-                    "title": "BooleanField",
+                    "title": "boolean-测试",
                     "default": false,
+                    "widget": "radio",
                 },
-                "ArrayField": {
+                "ArrayField1": {
                     "type": "array",
-                    "title": "ArrayField",
+                    "title": "array-string-测试",
                     "minLens": 2,
                     "items": {
                         "type": "string",
-                        "title": "Array-StringField",
-                        "require": true,
                         "default": "array-string"
                     }
                 }
@@ -48,5 +51,4 @@ export const formData = {
             "c"
         ]
     }
-
 }

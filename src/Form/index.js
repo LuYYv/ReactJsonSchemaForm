@@ -16,6 +16,7 @@ class App extends Component {
 
     componentDidMount() {
         const {schema, formData} = this.props;
+        console.log(schema, formData);
         let defFormData = dataParser(schema);
         let _formData = _.merge(defFormData, formData);
         this.setState({

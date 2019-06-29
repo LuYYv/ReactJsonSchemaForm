@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Widget from "../Widgets";
-import { TitleField } from './TitleField';
+import getWidget from "../Widgets";
 import checker from "../../Form/FormChecker";
 
 class BasicField extends Component {
@@ -24,17 +23,20 @@ class BasicField extends Component {
 
 
   render() { 
-    const {schema, formData} = this.props;
+    const { schema, formData, require=false } = this.props;
+    const Widget = getWidget[schema.type][`default`];
+    console.log(require);
     return ( 
       <div className="basic-field">
-        <Label 
+        {schema.title &&
+          <Label 
           title={schema.title}
-          require={schema.require} />
+          require={require} />}
         <Widget
           schema={schema}
-          formData={formData}
+          data={formData}
           onChange={this.handleChange}
-          onCheck={this.handleCheck} />
+          onBlur={this.handleCheck} />
       </div>
      );
   }

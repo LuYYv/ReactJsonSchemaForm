@@ -18,14 +18,18 @@ const ObjectField = (props) => {
 
 const Properties = (props) => {
     const {schema, formData, $id, onChange} = props;
-    return Object.keys(schema.properties).map(i=>
-        <SchemaField
-          key={`${$id}-${i}`}
-          $id={`${$id}-${i}`}
-          schema={schema.properties[i]}
-          formData={formData[i]}
-          onChange={onChange} />
-    )
+    return Object.keys(schema.properties).map(i=>{
+        const require = schema.require == undefined ? false : schema.require.indexOf(i) === (-1) ? false : true;
+        return (
+          <SchemaField
+            key={`${$id}-${i}`}
+            $id={`${$id}-${i}`}
+            schema={schema.properties[i]}
+            formData={formData[i]}
+            require={require}
+            onChange={onChange} />
+        )
+    })
 }
 
 export default ObjectField;

@@ -1,20 +1,18 @@
 import React from 'react';
-import NumberWidget from "./Number";
-import StringWidget from "./String";
-import BooleanWidget from "./Boolean";
+import BaseInput from "./BaseInput";
+import BooleanWidget from "./BooleanWidget";
+import NumberWidget from "./NumberWidget";
 
-const getWidget = (props) => {
-  const typeMap = {
-    string: StringWidget,
-    number: NumberWidget,
-    boolean: BooleanWidget
+const getWidget = {
+  string: {
+    default: BaseInput,
+  },
+  number: {
+    default: NumberWidget,
+  },
+  boolean: {
+    default: BooleanWidget,
   }
-  const typeParser = () => {
-    const Widget = typeMap[props.schema.type];
-    return <Widget { ...props } />
-  }
-  return typeParser();
-
 }
 
 export default getWidget;
