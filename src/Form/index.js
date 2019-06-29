@@ -16,7 +16,6 @@ class App extends Component {
 
     componentDidMount() {
         const {schema, formData} = this.props;
-        console.log(schema, formData);
         let defFormData = dataParser(schema);
         let _formData = _.merge(defFormData, formData);
         this.setState({
@@ -27,6 +26,7 @@ class App extends Component {
     }
 
     onDataChange({value, id}) {
+        console.log(value);
         const _formData = JSON.parse(JSON.stringify(this.state.formData));
         let path = id.split('-').slice(1).join(`.`);
         _.set(_formData, path, value);

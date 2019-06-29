@@ -64,19 +64,21 @@ const ArrayItems = ({ schema, schema:{minLens=1, items, maxLens=10000}, formData
   let doms = [];
   const length = formData.length
   for (let i=0; i<length; i++ ) {
-      doms.push (
-          <div className="array-items" key={i}>
-            <SchemaField 
-              schema = {items}
-              formData = {formData[i]}
-              $id={`${$id}[${i}]`}
-              onChange={onChange} />
-            <OperateBtns 
-              index={i}
-              minLens={minLens}
-              curLength={length}
-              { ...Operates } />
-          </div>
+  //   console.log(items);
+  //   console.log(formData[i]);
+    doms.push (
+        <div className="array-items" key={i}>
+          <SchemaField 
+            schema = {items}
+            formData = {formData[i]}
+            $id={`${$id}[${i}]`}
+            onChange={onChange} />
+          <OperateBtns 
+            index={i}
+            minLens={minLens}
+            curLength={length}
+            { ...Operates } />
+        </div>
       )
   }
   return doms;

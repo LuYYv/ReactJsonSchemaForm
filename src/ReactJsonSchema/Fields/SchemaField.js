@@ -4,11 +4,12 @@ import ObjectField from './ObjectField';
 import ArrayField from './ArrayField'
 
 const SchemaField = (props) => {
-    let Field = renderField(props.schema.type)
-    return (
-      <Field 
-        {...props} />
-    ) 
+  let Field = renderField(props.schema.type)
+  if(!Field) throw `type is inValid`;
+  return (
+    <Field 
+      {...props} />
+  ) 
 }
 
 

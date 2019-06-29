@@ -5,27 +5,33 @@ import checker from "../../Form/FormChecker";
 class BasicField extends Component {
   constructor(props) {
     super(props);
-    this.state = {  }
+    this.state = { 
+      errorConfig: null
+    }
     this.handleChange = this.handleChange.bind(this);
     this.handleCheck = this.handleCheck.bind(this);
   }
 
-  handleChange (value) {
+  handleChange (e) {
+    const value = e.target ? e.target.value : e;
     this.props.onChange({value, id: this.props.$id});
   } 
 
   handleCheck (value) {
     const { schema, formData } = this.props;
     const errorSchema = checker({ schema, formData });
+    this.setState(this.changeVaild(errorSchema == undefined ? null : errorSchema.errorConfig));
+  }
 
-    console.log(errorSchema);
+  changeVaild (errorConfig) {
+    return { errorConfig };
   }
 
 
   render() { 
     const { schema, formData, require=false } = this.props;
+    const { errorConfig } = this.state;
     const Widget = getWidget[schema.type][`default`];
-    console.log(require);
     return ( 
       <div className="basic-field">
         {schema.title &&
@@ -34,9 +40,14 @@ class BasicField extends Component {
           require={require} />}
         <Widget
           schema={schema}
-          data={formData}
+          value={formData}
           onChange={this.handleChange}
           onBlur={this.handleCheck} />
+        {errorConfig && 
+          <div className="error-config">
+            {errorConfig}
+          </div>
+        }
       </div>
      );
   }
