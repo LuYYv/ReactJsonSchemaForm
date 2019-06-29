@@ -86,11 +86,11 @@ const OperateBtns = ({ index, onDelItem, onMoveItem, minLens=0, curLength }) => 
   return (
       <div className="arrayHandle">
         { index > 0 && 
-          <span className="moveupItem" onClick={()=>{onMoveItem({index, direct: `up`})}} ><Icon type="up" /></span> }
+          <span className="moveupItem" onClick={()=>{onMoveItem({index, direct: `up`})}} > <Icon type="up" /> </span> }
         { index < curLength-1 && 
-          <span className="movedownItem" onClick={()=>{onMoveItem({index, direct: `down`})}} ><Icon type="down" /></span> }
+          <span className="movedownItem" onClick={()=>{onMoveItem({index, direct: `down`})}} > <Icon type="down" /> </span> }
         { curLength > minLens && 
-          <span className="delItem" onClick={()=>{onDelItem(index)}}><Icon type="delete"/></span> }
+          <span className="delItem" onClick={()=>{onDelItem(index)}}> <Icon type="delete"/> </span> }
       </div>
   )
 }

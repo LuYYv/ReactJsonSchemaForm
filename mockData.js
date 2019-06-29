@@ -1,19 +1,22 @@
 export const schema = {
     "type": "object",
-    "title": "test",
+    "title": "schema-测试",
     "properties": {
         "ObjectField": {
             "type": "object",
-            "title": "基本信息",
+            "title": "object-测试",
             "properties": {
                 "StringField": {
                     "type": "string",
                     "title": "StringField",
-                    "default": "string"
+                    "default": "string",
+                    "minLength": "2",
+                    "maxLength": "5",
                 },
                 "NumberField": {
                     "type": "number",
                     "title": "NumberField",
+                    "require": true,
                     "default": "250",
                 },
                 "BooleanField": {
@@ -28,6 +31,7 @@ export const schema = {
                     "items": {
                         "type": "string",
                         "title": "Array-StringField",
+                        "require": true,
                         "default": "array-string"
                     }
                 }

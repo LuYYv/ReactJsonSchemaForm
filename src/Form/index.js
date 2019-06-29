@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import { dataParser } from "./FormData.Init";
 import ReactJsonSchema from '../ReactJsonSchema';
-
-
+import './style.less'
 class App extends Component {
     constructor(props) {
         super(props);
@@ -12,7 +11,7 @@ class App extends Component {
             formData: null,
             componentInit: false,
         }
-        this.handleFormDataChange = this.handleFormDataChange.bind(this);
+        this.onDataChange = this.onDataChange.bind(this);
     }
 
     componentDidMount() {
@@ -26,7 +25,7 @@ class App extends Component {
         })
     }
 
-    handleFormDataChange({value, id}) {
+    onDataChange({value, id}) {
         const _formData = JSON.parse(JSON.stringify(this.state.formData));
         let path = id.split('-').slice(1).join(`.`);
         _.set(_formData, path, value);
@@ -39,10 +38,13 @@ class App extends Component {
       if( !this.state.componentInit ) return null;
       const {schema, formData={}} = this.state;
       return ( 
-        <ReactJsonSchema
-          schema={schema}
-          formData={formData}
-          onChange={this.handleFormDataChange} />
+        <div className="json-schema-form">
+          <ReactJsonSchema
+            schema={schema}
+            formData={formData}
+            onChange={this.onDataChange} />
+        </div>
+       
       )
     }
 }

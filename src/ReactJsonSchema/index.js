@@ -1,5 +1,6 @@
 import React from 'react';
 import SchemaField from "./Fields/SchemaField";
+import './style/index.less'
 
 const ReactJsonSchema = (props) => {
   return (
