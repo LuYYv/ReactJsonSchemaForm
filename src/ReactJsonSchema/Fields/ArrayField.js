@@ -19,7 +19,7 @@ class ArrayField extends Component {
   componentDidMount() {
     this.defaultFormData = (() => {
       const { schema, schema: { items } } = this.props;
-      return items.type == 'object' ? objectTranser({ schema: items.properties }) || {} : itemsTranser(items) || null;
+      return items.type == 'object' ? objectTranser({ schema: items }) || {} : itemsTranser(items) || null;
     })()
   }
 

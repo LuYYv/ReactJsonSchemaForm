@@ -6,7 +6,7 @@ export const dataParser = (schema)=>{
 
 
 export const objectTranser = ({schema, beforePath})=> {
-  if (!schema.properties) return ;
+  // if (!schema.properties) return ;
   let formData = {};
   Object.keys(schema.properties).map(i => {
       let p = schema.properties[i];
